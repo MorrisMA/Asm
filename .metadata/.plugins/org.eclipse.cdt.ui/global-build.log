@@ -1,0 +1,84 @@
+19:58:19 **** Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   
+Finished building target: Lister
+ 
+19:58:59 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+19:59:15 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+19:59:50 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+20:02:20 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+20:02:37 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+20:03:09 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+20:03:17 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+20:04:47 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+20:06:08 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   
+Finished building target: Lister
+ 
+20:10:48 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   -lm
+Finished building target: Lister
+ 
+20:23:44 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   -lm
+Finished building target: Lister
+ 
+20:26:04 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   -lm
+Finished building target: Lister
+ 
