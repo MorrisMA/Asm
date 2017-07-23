@@ -1,4 +1,4 @@
-20:26:04 **** Incremental Build of configuration Debug for project Lister ****
+08:20:21 **** Incremental Build of configuration Debug for project Lister ****
 make all 
 Building file: ../src/Lister.c
 Invoking: GCC C Compiler
@@ -11,5 +11,5 @@ gcc  -o "Lister"  ./src/Lister.o   -lm
 Finished building target: Lister
  
 
-20:26:04 Build Finished (took 442ms)
+08:20:21 Build Finished (took 693ms)
 

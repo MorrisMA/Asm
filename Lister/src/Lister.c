@@ -1,9 +1,9 @@
 /*
  ==============================================================================
- Name        : Asm.c
+ Name        : Lister.c
  Author      : Michael A. Morris
  Version     : 0.0.1
- Copyright   : Copyright 2016 - GPLv3
+ Copyright   : Copyright 2017 - GPLv3
  Description : Simple Program in C, ANSI-style
  ==============================================================================
 */
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     /*
      * Repeatedly call get_source_line to read and print
      * the next source line until the end of file.
-    */
+     */
 
     while(get_source_line());
 
@@ -66,9 +66,9 @@ int main(int argc, char *argv[])
 
 /*
  *
- * void init_lister(char name[])	-- Initialize the Lister globals
+ * void init_lister(char name[])    Initialize the Lister globals
  *
-*/
+ */
 
 void init_lister(char name[])
 {
@@ -76,25 +76,25 @@ void init_lister(char name[])
 
     /*
      * Copy the source file name and open the source file.
-    */
+     */
 
     strcpy(source_name, name);
     source_file = fopen(source_name, "r");
 
     /*
      * Set the current date and time in the date string.
-    */
+     */
 
     time(&timer);
     strcpy(date, asctime(localtime(&timer)));
 }
 
 /*
- * BOOLEAN get_source_line(void)	Read the next line from the source
- *                                  file. If there was one, print it out
- *                                  and return TRUE. Else at the end of file,
- *                                  so return FALSE.
-*/
+ * BOOLEAN get_source_line(void)    Read the next line from the source
+ *                                  file. If there was one, print it
+ *                                  out and return TRUE. Else at the
+ *                                  end of file, so return FALSE.
+ */
 
 BOOLEAN get_source_line(void)
 {
@@ -114,7 +114,7 @@ BOOLEAN get_source_line(void)
 /*
  * void print_line(char line[])	Print out a line. Start a new page if
  *                              current page is full.
-*/
+ */
 
 void print_line(char line[])
 {
@@ -145,7 +145,7 @@ void print_line(char line[])
     if(save_chp) {
         save_chp[0] = save_ch[0]; save_chp[1] = save_ch[1];
 
-//        int i; for(save_chp -= 8, i = 0; i < 8; i++) save_chp[i] = ' ';
+//      int i; for(save_chp -= 8, i = 0; i < 8; i++) save_chp[i] = ' ';
 
         printf("        "); print_line(save_chp);
     }
@@ -154,7 +154,7 @@ void print_line(char line[])
 /*
  * void print_page_header(void)	Print the page header at the top of the
  *                              next page.
-*/
+ */
 
 void print_page_header(void)
 {

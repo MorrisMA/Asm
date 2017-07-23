@@ -82,3 +82,297 @@ Invoking: GCC C Linker
 gcc  -o "Lister"  ./src/Lister.o   -lm
 Finished building target: Lister
  
+22:05:40 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   -lm
+Finished building target: Lister
+ 
+22:07:11 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   -lm
+Finished building target: Lister
+ 
+08:20:21 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   -lm
+Finished building target: Lister
+ 
+17:26:08 **** Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+../src/Tokenizer.c:125:1: warning: parameter names (without types) in function declaration
+ void get_word(word);
+ ^
+../src/Tokenizer.c: In function ‘init_scanner’:
+../src/Tokenizer.c:178:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  for(ch = 0;   ch <  256; ch++) char_table[ch] = SPECIAL; // Init. all as SPECIAL
+  ^
+../src/Tokenizer.c:179:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  for(ch = '0'; ch <= '9'; ch++) char_table[ch] = NUMBER;     // Set '0'-'9' as NUMBER
+  ^
+../src/Tokenizer.c:180:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  for(ch = 'a'; ch <= 'z'; ch++) char_table[ch] = LETTER;  // Set 'a'-'z' as LETTER
+  ^
+../src/Tokenizer.c:181:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  for(ch = 'A'; ch <= 'Z'; ch++) char_table[ch] = LETTER;  // Set 'A'-'Z' as LETTER
+  ^
+../src/Tokenizer.c: In function ‘get_token’:
+../src/Tokenizer.c:213:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  switch(char_code(ch)) {
+  ^
+../src/Tokenizer.c: In function ‘get_word’:
+../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  while((LETTER == char_code(ch)) || (DIGIT == char_code(ch))) {
+  ^
+../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+../src/Tokenizer.c: In function ‘get_number’:
+../src/Tokenizer.c:269:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  } while(DIGIT == char_code(ch));
+  ^
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+17:27:05 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+../src/Tokenizer.c:125:1: warning: parameter names (without types) in function declaration
+ void get_word(word);
+ ^
+../src/Tokenizer.c: In function ‘get_token’:
+../src/Tokenizer.c:213:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  switch(char_code(ch)) {
+  ^
+../src/Tokenizer.c: In function ‘get_word’:
+../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  while((LETTER == char_code(ch)) || (DIGIT == char_code(ch))) {
+  ^
+../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+../src/Tokenizer.c: In function ‘get_number’:
+../src/Tokenizer.c:269:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  } while(DIGIT == char_code(ch));
+  ^
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+17:27:42 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+../src/Tokenizer.c:125:1: warning: parameter names (without types) in function declaration
+ void get_word(word);
+ ^
+../src/Tokenizer.c: In function ‘get_word’:
+../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  while((LETTER == char_code(ch)) || (DIGIT == char_code(ch))) {
+  ^
+../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+../src/Tokenizer.c: In function ‘get_number’:
+../src/Tokenizer.c:269:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+  } while(DIGIT == char_code(ch));
+  ^
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+17:28:52 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+17:31:57 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+17:40:55 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+18:01:03 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:02:06 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:03:04 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:03:33 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:08:31 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+18:11:12 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+18:13:22 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:13:42 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:34:04 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:36:37 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:44:19 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+18:45:47 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+18:47:50 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+18:48:45 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+18:49:57 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+18:59:04 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+19:02:37 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+19:04:19 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+19:24:07 **** Incremental Build of configuration Debug for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.

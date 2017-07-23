@@ -1,0 +1,271 @@
+/*
+ ==============================================================================
+ Name        : Tokenizer.c
+ Author      : Michael A. Morris
+ Version     : 0.0.1
+ Copyright   : Copyright 2017 - GPLv3
+ Description : Simple Tokenizer in C, ANSI-style
+ ==============================================================================
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#define	FORM_FEED_CHAR	'\f'
+#define EOF_CHAR        '\x7f'
+
+#define	MAX_FILENAME_LENGTH     32
+#define	MAX_SOURCE_LINE_LENGTH	256
+#define	MAX_PRINT_LINE_LENGTH   80
+#define MAX_BACK_TRACK_LENGTH   26
+#define MAX_LINES_PER_PAGE      50
+#define	DATE_STRING_LENGTH      26
+#define MAX_TOKEN_STRING_LENGTH MAX_SOURCE_LINE_LENGTH
+#define MAX_CODE_BUFFER_SIZE    4096
+
+#define MAX_POSITIVE_INTEGER    32767
+#define MAX_NEGATIVE_INTEGER    -32768
+#define MAX_INTEGER             MAX_POSITIVE_INTEGER
+#define MAX_DIGIT_COUNT         20
+
+typedef enum {
+	FALSE, TRUE,
+} BOOLEAN;
+
+/*
+ * Character Code Types
+ */
+
+typedef enum {
+	LETTER, DIGIT, SPECIAL, EOF_CODE,
+} CHAR_CODE;
+
+/*
+ * Token Types
+ */
+
+typedef enum {
+	NO_TOKEN,
+	WORD, NUMBER, PERIOD,
+	END_OF_FILE,
+	ERROR,
+} TOKEN_CODE;
+
+/*
+ * Token Name Strings
+ */
+
+char *symbol_strings[] = {
+	"<no token>",
+	"<WORD>", "<NUMBER>", "<PERIOD>",
+	"<END OF FILE>",
+	"<ERROR>",
+};
+
+/*
+ * Literal Structure Definition
+ */
+
+typedef enum {
+	INTEGER_LIT, STRING_LIT,
+} LITERAL_TYPE;
+
+typedef struct {
+	LITERAL_TYPE type;
+	union {
+		int  integer;
+		char string[MAX_SOURCE_LINE_LENGTH];
+	} value;
+} LITERAL;
+
+/*
+ * Global Variables
+ */
+
+char ch;                // Holds the next character read from input
+
+TOKEN_CODE token;       // Indicates the type of token read from input
+LITERAL    literal;		// Working store for literals read from input
+
+char source_buffer[MAX_SOURCE_LINE_LENGTH]; // Source file buffer
+char token_string[MAX_TOKEN_STRING_LENGTH]; // Token string
+char *bufferp = source_buffer;              // Source Buffer Pointer
+char *tokenp  = token_string;               // Token String Pointer
+
+int     digit_count;    // Number of digits in current number
+BOOLEAN count_error;    // TRUE if digit_count > MAX_DIGIT_COUNT
+
+int  line_number = 0;                   // Current line number
+int	 line_count  = MAX_LINES_PER_PAGE;  // Number of lines on current page
+int	 page_number = 0;                   // Current page number
+int	 level       = 0;                   // Current lexical level
+
+char source_name[MAX_FILENAME_LENGTH];  // Buffer for file name argument
+char date[DATE_STRING_LENGTH];          // Buffer for calculated date string
+
+FILE *source_file;      // Structure for input data stream
+
+CHAR_CODE char_table[256];  // Character type code associated char codes
+
+/*
+ * Macro for converting ch into character type code
+ */
+
+#define char_code(ch) char_table[ch]    // no semicolon here, supplied by pgm
+
+// Function Prototypes
+
+void init_scanner(char name[]);
+BOOLEAN get_source_line(void);
+void print_line(char line[]);
+void init_page_header(char name[]);
+void print_page_header(void);
+
+/*
+ * int main(int, char **)   Loop to tokenize source file
+ */
+
+int main(int argc, char *argv[])
+{
+    init_scanner(argv[1]);
+
+    /*
+     * Repeatedly get tokens until period or end of file.
+     */
+
+    do {
+    	get_token();
+    	if(END_OF_FILE == token) {
+    		printf("\n******* ERROR ******* Unexpected End of File\n");
+    		break;
+    	}
+
+    	print_token();
+    } while(PERIOD != token);
+
+    quit_scanner();
+
+    return 0;
+}
+
+/*
+ * void init_scanner(void)          Initializer scanner/tokenizer globals
+ */
+
+void init_scanner(char name[])
+{
+	char ch;
+
+	/*
+	 * Initialize character type table/array
+	 */
+
+	for(ch = 0;   ch <  256; ch++) char_table[ch] = SPECIAL;	// Init. all as SPECIAL
+	for(ch = '0'; ch <= '9'; ch++) char_table[ch] = NUMBER;     // Set '0'-'9' as NUMBER
+	for(ch = 'a'; ch <= 'z'; ch++) char_table[ch] = LETTER;		// Set 'a'-'z' as LETTER
+	for(ch = 'A'; ch <= 'Z'; ch++) char_table[ch] = LETTER;		// Set 'A'-'Z' as LETTER
+
+	char_table[EOF_CHAR] = EOF_CODE;
+
+	init_page_header(name);
+	open_source_file(name);
+}
+/*
+ * BOOLEAN get_source_line(void)    Read the next line from the source
+ *                                  file. If there was one, print it
+ *                                  out and return TRUE. Else at the
+ *                                  end of file, so return FALSE.
+ */
+
+BOOLEAN get_source_line(void)
+{
+    char print_buffer[MAX_SOURCE_LINE_LENGTH];
+
+    if(NULL != fgets(source_buffer, MAX_SOURCE_LINE_LENGTH, source_file)) {
+        ++line_number;
+        sprintf(print_buffer, "%4d %d: %s", line_number, level, source_buffer);
+        print_line(print_buffer);
+
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+/*
+ * void print_line(char line[])	Print out a line. Start a new page if
+ *                              current page is full.
+ */
+
+void print_line(char line[])
+{
+    char save_ch[2];
+    char *save_chp = NULL;
+
+    if(MAX_LINES_PER_PAGE < ++line_count) {
+        print_page_header();
+        line_count = 1;
+    }
+
+    if(MAX_PRINT_LINE_LENGTH < strlen(line)) {
+        save_chp = &line[MAX_PRINT_LINE_LENGTH];
+
+		int i;
+		for(i = 1; (' ' != *save_chp) && (MAX_BACK_TRACK_LENGTH > i); i++) {
+			--save_chp;
+		}
+    }
+
+    if(save_chp) {
+        save_ch[0] = save_chp[0]; save_chp[0] = '\n';
+        save_ch[1] = save_chp[1]; save_chp[1] = '\0';
+    }
+
+    printf("%s", line);
+
+    if(save_chp) {
+        save_chp[0] = save_ch[0]; save_chp[1] = save_ch[1];
+
+//      int i; for(save_chp -= 8, i = 0; i < 8; i++) save_chp[i] = ' ';
+
+        printf("        "); print_line(save_chp);
+    }
+}
+
+/*
+ *
+ * void init_page_header(char name[])   Initialize the page header globals
+ *
+ */
+
+void init_page_header(char name[])
+{
+    time_t timer;
+
+    /*
+     * Copy the source file name and open the source file.
+     */
+
+    strcpy(source_name, name);
+    source_file = fopen(source_name, "r");
+
+    /*
+     * Set the current date and time in the date string.
+     */
+
+    time(&timer);
+    strcpy(date, asctime(localtime(&timer)));
+}
+
+/*
+ * void print_page_header(void)	Print the page header at the top of the
+ *                              next page.
+ */
+
+void print_page_header(void)
+{
+    putchar(FORM_FEED_CHAR);
+    printf("Page %d   %s   %s\n\n", ++page_number, source_name, date);
+}
