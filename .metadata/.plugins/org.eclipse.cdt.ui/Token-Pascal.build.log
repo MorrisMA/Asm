@@ -1,0 +1,15 @@
+13:43:10 **** Incremental Build of configuration Debug for project Token-Pascal ****
+make all 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building target: Token-Pascal
+Invoking: GCC C Linker
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
+Finished building target: Token-Pascal
+ 
+
+13:43:10 Build Finished (took 748ms)
+

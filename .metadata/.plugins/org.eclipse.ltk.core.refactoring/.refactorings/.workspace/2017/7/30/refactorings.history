@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;Tokenizer/Sieve.pas&apos;" deleteContents="false" description="Delete resource &apos;Tokenizer/Sieve.pas&apos;" element1="/Tokenizer/Sieve.pas" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1500770472217"/>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Tokenizer/Sieve.pas&apos;" deleteContents="false" description="Delete resource &apos;Tokenizer/Sieve.pas&apos;" element1="/Tokenizer/Sieve.pas" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1500770472217"/>&#x0A;<refactoring comment="Delete resource &apos;Token-Pascal/src/common.c&apos;" deleteContents="false" description="Delete resource &apos;Token-Pascal/src/common.c&apos;" element1="/Token-Pascal/src/common.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1500826374655"/>
 </session>

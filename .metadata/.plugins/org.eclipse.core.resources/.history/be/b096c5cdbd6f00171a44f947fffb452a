@@ -1,0 +1,13 @@
+/*
+ * ScannerPascal.c
+ *
+ *  Created on : Jul 23, 2017
+ *  Author     : Michael A. Morris
+ *  Description: Implements the scanner and tokenizer functions
+ *               for Pascal. Organization is such that minimal
+ *               changes are required to change the tokens to
+ *               support another HLL or an assembly.
+ *  Copyright  : Copyright 2017, GPLv3
+ */
+
+

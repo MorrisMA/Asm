@@ -1,0 +1,15 @@
+/*
+ * error.h
+ *
+ *  Created on : Jul 23, 2017
+ *  Author     : Michael A. Morris
+ *  Description: Defines the error codes.
+ *  Copyright  : Copyright 2017, GPLv3
+ */
+
+#ifndef ERROR_H_
+#define ERROR_H_
+
+
+
+#endif /* ERROR_H_ */

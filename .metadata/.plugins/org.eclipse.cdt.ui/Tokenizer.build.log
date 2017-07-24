@@ -1,6 +1,7 @@
-19:24:07 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-make: Nothing to be done for 'all'.
+10:36:36 **** Clean-only build of configuration Debug for project Tokenizer ****
+make clean 
+rm -rf  ./src/Tokenizer.o  ./src/Tokenizer.d  Tokenizer
+ 
 
-19:24:07 Build Finished (took 83ms)
+10:36:36 Build Finished (took 130ms)
 

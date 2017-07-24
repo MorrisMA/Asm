@@ -1,0 +1,17 @@
+/*
+ ============================================================================
+ Name        : Token-Pascal.c
+ Author      : Michael A. Morris
+ Version     : 0.0.1
+ Copyright   : Copyright 2017, GPLv3
+ Description : Tokenizer Program for Pascal in C, ANSI-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	return EXIT_SUCCESS;
+}

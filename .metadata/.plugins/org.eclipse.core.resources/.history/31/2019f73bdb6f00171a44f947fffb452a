@@ -1,0 +1,66 @@
+/*
+ * ScannerPascal.c
+ *
+ *  Created on : Jul 23, 2017
+ *  Author     : Michael A. Morris
+ *  Description: Implements the scanner and tokenizer functions
+ *               for Pascal. Organization is such that minimal
+ *               changes are required to change the tokens to
+ *               support another HLL or an assembly.
+ *  Copyright  : Copyright 2017, GPLv3
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include "common.h"
+#include "error.h"
+#include "ScannerPascal.h"
+
+#define EOF_CHAR        '\x7f'
+#define TAB_SIZE        8
+
+#define NUM_BITS_INT			 32
+#define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
+#define MAX_NEGATIVE_INTEGER     (1 << NUM_BITS_INT)
+#define MAX_INTEGER              MAX_POSITIVE_INTEGER
+#define MAX_DIGIT_COUNT          20
+#define MAX_EXPONENT             308
+
+#define MIN_RESERVED_WORD_LENGTH 2
+#define MAX_RESERVED_WORD_LENGTH 9
+
+/*
+ * Character Code Types
+ */
+
+typedef enum {
+	LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
+} CHAR_CODE;
+
+/*
+ * Token Symbol Strings
+ */
+
+char *symbol_strings[] = {
+    "<No Token>", "<Identifier>", "<Number>", "<String>",
+	" ", "*", "(", ")", "-", "+", "=", "[", "]", ":", ";",
+	"<", ">", ",", ".", "/", ":=", "<=", ">=", "<>", "..",
+	"END OF FILE", "<ERROR>",
+	"AND", "ARRAY", "BEGIN", "CASE", "CONST", "DIV", "DO", "DOWNTO",
+	"ELSE", "END", "FILE", "FOR", "FUNCTION", "GOTO", "IF", "IN",
+	"LABEL", "MOD", "NIL", "NOT", "OF", "OR", "PACKED", "PROCEDURE",
+	"PROGRAM", "RECORD", "REPEAT", "SET", "THEN", "TO", "TYPE",
+	"UNTIL", "VAR", "WHILE", "WITH",
+};
+
+/*
+ * Reserved Word Tables
+ */
+
+typedef struct {
+	char       *string;
+	TOKEN_CODE token_code;
+} RW_STRUCT;

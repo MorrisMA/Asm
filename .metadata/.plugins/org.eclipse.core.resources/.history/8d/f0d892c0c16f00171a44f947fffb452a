@@ -1,0 +1,16 @@
+/*
+ * common.h
+ *
+ *  Created on : Jul 23, 2017
+ *  Author     : Michael A. Morris
+ *  Description: Provides the common functions to support
+ *               scanning and tokenizing.
+ *  Copyright  : Copyright 2017, GPLv3
+ */
+
+#ifndef COMMON_H_
+#define COMMON_H_
+
+
+
+#endif /* COMMON_H_ */

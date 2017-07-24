@@ -1,0 +1,104 @@
+/*
+ * ScannerPascal.c
+ *
+ *  Created on : Jul 23, 2017
+ *  Author     : Michael A. Morris
+ *  Description: Implements the scanner and tokenizer functions
+ *               for Pascal. Organization is such that minimal
+ *               changes are required to change the tokens to
+ *               support another HLL or an assembly.
+ *  Copyright  : Copyright 2017, GPLv3
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include "common.h"
+#include "error.h"
+#include "ScannerPascal.h"
+
+#define EOF_CHAR        '\x7f'
+#define TAB_SIZE        8
+
+#define NUM_BITS_INT			 32
+#define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
+#define MAX_NEGATIVE_INTEGER     (1 << NUM_BITS_INT)
+#define MAX_INTEGER              MAX_POSITIVE_INTEGER
+#define MAX_DIGIT_COUNT          20
+#define MAX_EXPONENT             308
+
+#define MIN_RESERVED_WORD_LENGTH 2
+#define MAX_RESERVED_WORD_LENGTH 9
+
+/*
+ * Character Code Types
+ */
+
+typedef enum {
+	LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
+} CHAR_CODE;
+
+/*
+ * Token Symbol Strings
+ */
+
+char *symbol_strings[] = {
+    "<No Token>", "<Identifier>", "<Number>", "<String>",
+	" ", "*", "(", ")", "-", "+", "=", "[", "]", ":", ";",
+	"<", ">", ",", ".", "/", ":=", "<=", ">=", "<>", "..",
+	"END OF FILE", "<ERROR>",
+	"AND", "ARRAY", "BEGIN", "CASE", "CONST", "DIV", "DO", "DOWNTO",
+	"ELSE", "END", "FILE", "FOR", "FUNCTION", "GOTO", "IF", "IN",
+	"LABEL", "MOD", "NIL", "NOT", "OF", "OR", "PACKED", "PROCEDURE",
+	"PROGRAM", "RECORD", "REPEAT", "SET", "THEN", "TO", "TYPE",
+	"UNTIL", "VAR", "WHILE", "WITH",
+};
+
+/*
+ * Reserved Word Tables
+ */
+
+typedef struct {
+	char       *string;
+	TOKEN_CODE token_code;
+} RW_STRUCT;
+
+
+
+/*
+ * Global Variables
+ */
+
+char ch;                // Holds the next character read from input
+
+TOKEN_CODE token;       // Indicates the type of token read from input
+LITERAL    literal;		// Working store for literals read from input
+
+char source_buffer[MAX_SOURCE_LINE_LENGTH]; // Source file buffer
+char token_string[MAX_TOKEN_STRING_LENGTH]; // Token string
+char *bufferp      = source_buffer;         // Source Buffer Pointer
+int  buffer_offset = 0;                     // Offset into source buffer
+char *tokenp       = token_string;          // Token String Pointer
+
+int     digit_count;    // Number of digits in current number
+BOOLEAN count_error;    // TRUE if digit_count > MAX_DIGIT_COUNT
+
+int  line_number = 0;                   // Current line number
+int	 line_count  = MAX_LINES_PER_PAGE;  // Number of lines on current page
+int	 page_number = 0;                   // Current page number
+int	 level       = 0;                   // Current lexical level
+
+char source_name[MAX_FILENAME_LENGTH];  // Buffer for file name argument
+char date[DATE_STRING_LENGTH];          // Buffer for calculated date string
+
+FILE *source_file;      // Structure for input data stream
+
+CHAR_CODE char_table[256];  // Character type code associated char codes
+
+/*
+ * Macro for converting ch into character type code
+ */
+
+#define char_code(ch) char_table[(int) ch]    // no semicolon here, supplied by pgm

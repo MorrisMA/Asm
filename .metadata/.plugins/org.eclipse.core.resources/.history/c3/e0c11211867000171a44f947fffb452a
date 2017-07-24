@@ -1,0 +1,723 @@
+/*
+ * ScannerPascal.c
+ *
+ *  Created on : Jul 23, 2017
+ *  Author     : Michael A. Morris
+ *  Description: Implements the scanner and tokenizer functions
+ *               for Pascal. Organization is such that minimal
+ *               changes are required to change the tokens to
+ *               support another HLL or an assembly.
+ *  Copyright  : Copyright 2017, GPLv3
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include "common.h"
+#include "error.h"
+#include "ScannerPascal.h"
+
+#define EOF_CHAR        '\x7f'
+#define TAB_SIZE        8
+
+#define NUM_BITS_INT			 32
+#define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
+#define MAX_NEGATIVE_INTEGER     (1 << NUM_BITS_INT)
+#define MAX_INTEGER              MAX_POSITIVE_INTEGER
+#define MAX_DIGIT_COUNT          20
+#define MAX_EXPONENT             308
+
+#define MIN_RESERVED_WORD_LENGTH 2
+#define MAX_RESERVED_WORD_LENGTH 9
+
+/*
+ * Token Symbol Strings
+ */
+
+char *symbol_strings[] = {
+    "<No Token>", "<Identifier>", "<Number>", "<String>",
+	"^", "*", "(", ")", "-", "+", "=", "[", "]", ":", ";",
+	"<", ">", ",", ".", "/", ":=", "<=", ">=", "<>", "..",
+	"END OF FILE", "<ERROR>",
+	"AND", "ARRAY", "BEGIN", "CASE", "CONST", "DIV", "DO", "DOWNTO",
+	"ELSE", "END", "FILE", "FOR", "FUNCTION", "GOTO", "IF", "IN",
+	"LABEL", "MOD", "NIL", "NOT", "OF", "OR", "PACKED", "PROCEDURE",
+	"PROGRAM", "RECORD", "REPEAT", "SET", "THEN", "TO", "TYPE",
+	"UNTIL", "VAR", "WHILE", "WITH",
+};
+
+/*
+ * Reserved Word Tables
+ *      Tables are created for reserved words of specific lengths.
+ *      Each table is sorted in alphabetical order, and matches the
+ *      token_code and symbol_strings variables. Each table is
+ *      terminated by a structure element consisting of a NULL string
+ *      and a NULL token type, i.e. NO_TOKEN.
+ */
+
+typedef struct {
+	char       *string;
+	TOKEN_CODE token_code;
+} RW_STRUCT;
+
+RW_STRUCT rw_2[] = {
+    {"do", DO}, {"if", IF}, {"in", IN}, {"of", OF}, {"or", OR},
+	{"to", TO}, {NULL, 0},
+};
+
+RW_STRUCT rw_3[] = {
+    {"and", AND}, {"div", DIV}, {"end", END}, {"for", FOR},
+	{"mod", MOD}, {"nil", NIL}, {"not", NOT}, {"set", SET},
+	{"var", VAR}, {NULL, 0},
+};
+
+RW_STRUCT rw_4[] = {
+    {"case", CASE}, {"else", ELSE}, {"file", FFILE},
+	{"goto", GOTO}, {"then", THEN}, {"type", TYPE},
+	{"with", WITH}, {NULL, 0},
+};
+
+RW_STRUCT rw_5[] = {
+    {"array", ARRAY}, {"begin", BEGIN}, {"const", CONST},
+	{"label", LABEL}, {"until", UNTIL}, {"while", WHILE},
+	{NULL, 0},
+};
+
+RW_STRUCT rw_6[] = {
+    {"downto", DOWNTO}, {"packed", PACKED}, {"record", RECORD},
+	{"repeat", REPEAT}, {NULL, 0},
+};
+
+RW_STRUCT rw_7[] = {
+    {"program", PROGRAM}, {NULL, 0},
+};
+
+RW_STRUCT rw_8[] = {
+    {"function", FUNCTION}, {NULL, 0},
+};
+
+RW_STRUCT rw_9[] = {
+    {"procedure", PROCEDURE}, {NULL, 0},
+};
+
+RW_STRUCT *rw_table[] = {
+    NULL, NULL, rw_2, rw_3, rw_4, rw_5, rw_6, rw_7, rw_8, rw_9,
+};
+
+/*
+ * Global Variables
+ */
+
+char ch;                // Holds the next character read from input
+
+TOKEN_CODE token;       // Indicates the type of token read from input
+LITERAL    literal;		// Working store for literals read from input
+
+char source_buffer[MAX_SOURCE_LINE_LENGTH]; // Source file buffer
+char token_string[MAX_TOKEN_STRING_LENGTH]; // Token string
+char word_string[MAX_TOKEN_STRING_LENGTH];  // downshift_word workspace
+char *bufferp      = source_buffer;         // Source Buffer Pointer
+int  buffer_offset = 0;                     // Offset into source buffer
+char *tokenp       = token_string;          // Token String Pointer
+
+int     digit_count;    // Number of digits in current number
+BOOLEAN count_error;    // TRUE if digit_count > MAX_DIGIT_COUNT
+
+int	 page_number = 0;                   // Current page number
+int  line_number = 0;                   // Current line number
+int	 line_count  = MAX_LINES_PER_PAGE;  // Number of lines on current page
+
+int	 level       = 0;                   // Current lexical level
+
+char source_name[MAX_FILENAME_LENGTH];  // Buffer for file name argument
+char date[DATE_STRING_LENGTH];          // Buffer for calculated date string
+
+FILE *source_file;      // Structure for input data stream
+
+CHAR_CODE char_table[256];  // Character type code associated char codes
+
+/*
+ * Macro for converting ch into character type code
+ */
+
+#define char_code(ch) char_table[(int) ch]    // no semicolon here, supplied by pgm
+
+/*
+ * Local Function Prototypes
+ */
+
+void get_word(void);
+void get_number(void);
+void get_string(void);
+void get_special(void);
+
+void get_char(void);
+void skip_comment(void);
+void skip_blanks(void);
+void convert_to_lowercase(void);
+void accumulate_value(float *valuep, ERROR_CODE error_code);
+BOOLEAN is_reserved_word(void);
+
+BOOLEAN get_source_line(void);
+
+void print_line(char line[]);
+void init_page_header(char name[]);
+void print_page_header(void);
+
+/*
+ * void init_scanner(char name[])       Initializer scanner/tokenizer globals
+ */
+
+void init_scanner(char name[])
+{
+	int ch;
+
+	/*
+	 * Initialize character type table/array
+	 */
+
+	for(ch = 0;   ch <  256; ch++) char_table[ch] = SPECIAL;
+	for(ch = '0'; ch <= '9'; ch++) char_table[ch] = DIGIT;
+	for(ch = 'a'; ch <= 'z'; ch++) char_table[ch] = LETTER;
+	for(ch = 'A'; ch <= 'Z'; ch++) char_table[ch] = LETTER;
+	char_table['\'']     = QUOTE;
+	char_table[EOF_CHAR] = EOF_CODE;
+
+	init_page_header(name);
+	open_source_file(name);
+}
+
+/*
+ * void quit_scanner(void)  Quit the scanner gracefully
+ */
+
+void quit_scanner(void)
+{
+	close_source_file();
+}
+
+/*
+ * Token Processing Routines
+ *
+ *      After extracting a token, ch is the first character after the token.
+ */
+
+/*
+ * void get_token(void)     Extract a token from the source buffer
+ */
+
+void get_token(void)
+{
+	skip_blanks();
+	tokenp = token_string;
+
+	switch(char_code(ch)) {
+	case LETTER :
+		get_word();             // Words start with letter
+	    break;
+
+	case DIGIT :
+		get_number();           // Numbers start with digit
+		break;
+
+	case QUOTE :
+		get_string();
+		break;
+
+	case EOF_CODE :
+		token = END_OF_FILE;
+		break;
+
+	default :
+		get_special();          // All other characters are SPECIAL
+		break;
+	}
+}
+
+/*
+ * void get_word(void)      Extract a word token from the source buffer
+ */
+
+void get_word(void)
+{
+	/*
+	 * Extract word: Starts with LETTER, but consists of LETTERs or DIGITs thereafter
+	 */
+
+	while((LETTER == char_code(ch)) || (DIGIT == char_code(ch))) {
+		*tokenp++ = ch;     // Copy current character to token string
+		get_char();         // Get next character
+	}
+
+	*tokenp ='\0';          // Mark the end of the token string
+	convert_to_lowercase(); // Convert token strings to lower case
+
+	if(!is_reserved_word()) {
+		token = IDENTIFIER;
+	}
+}
+
+/*
+ * void get_number(void)    Extract a number for the source buffer
+ */
+
+void get_number(void)
+{
+	int   whole_count    = 0;   // Number of digits in whole part
+	int   decimal_offset = 0;   // Number of digits to move decimal point
+	char  exponent_sign  = '+';
+	int   exponent       = 0;   // Exponent value
+	float nvalue         = 0.0; // Value of number
+	float evalue         = 0.0; // Exponent value
+
+	BOOLEAN saw_dotdot = FALSE; // TRUE if '..' found during get_number()
+
+	digit_count = 0;            // Total number of digits in number
+	count_error = FALSE;        // TRUE if digit_count > MAX_DIGIT_COUNT
+	token       = NO_TOKEN;     // Assigned if number is valid
+
+	literal.type = INTEGER_LIT; // Assume number will be an integer
+
+	/*
+	 * Extract the whole part of the number by accumulating the values
+	 * of its digits in nvalue. whole_count keeps track of the number of
+	 * digits in the whole part.
+	 */
+
+	accumulate_value(&nvalue, INVALID_NUMBER);
+	if(ERROR == token) return;
+	whole_count = digit_count;
+
+	/*
+	 * If the current ch is a '.', then either a fractional part is about to
+	 * be processed, or it is the first '.' of a '..' token. To figure this
+	 * out, fetch the next character.
+	 */
+
+	if('.' == ch) {
+		get_char();
+
+		if('.' == ch) {
+			/*
+			 * the token '..' has been detected. Decrement the buffer pointer,
+			 * bufferp, so that the '..' can be processed next.
+			 */
+			saw_dotdot = TRUE;
+			--bufferp;
+		} else {
+			literal.type = REAL_LIT;    // Number has decimal point
+			*tokenp++ = '.';            // Write '.' into token string
+
+			/*
+			 * Process the fractional part of the floating point number.
+			 * Accumulate the fractional part in nvalue. The number of
+			 * digits in the fractional part is kept in decimal_offset,
+			 * which will track the number of digits to move the decimal
+			 * point back when the accumulation of the digits is complete.
+			 */
+
+			accumulate_value(&nvalue, INVALID_NUMBER);
+			if(ERROR == token) return;
+			decimal_offset = whole_count - digit_count;
+		}
+	}
+
+	/*
+	 * Extract the exponent part, if any. There cannot be an exponent part
+	 * if '..' token has been detected.
+	 */
+
+	if(!saw_dotdot && (('E' == ch) || ('e' == ch))) {
+		literal.type = REAL_LIT;
+		*tokenp++ = ch;
+		get_char();
+
+		/*
+		 * Get the sign of the exponent
+		 */
+
+		if(('+' == ch) || ('-' == ch)) {
+			*tokenp = exponent_sign = ch;
+			get_char();
+		}
+
+		/*
+		 * Get the exponent value. Accumulate exponent in evalue
+		 */
+
+		accumulate_value(&evalue, INVALID_NUMBER);
+		if(ERROR == token) return;
+		if('-' == exponent_sign) evalue = -evalue;
+	}
+
+	/*
+	 * If too many digits processed, declare ERROR
+	 */
+
+	if(count_error) {
+		error(TOO_MANY_DIGITS);
+		token = ERROR;
+		return;
+	}
+
+    /*
+     * Adjust the accumulated number's value using the decimal_offset
+     * and the exponent value.
+     */
+
+	exponent = evalue - decimal_offset;
+	if(   (-MAX_EXPONENT > (exponent + whole_count))
+	   || ( MAX_EXPONENT < (exponent + whole_count))) {
+	    error(REAL_OUT_OF_RANGE);
+	    token = ERROR;
+	    return;
+	}
+	if(0 != exponent) nvalue *= pow(10, exponent);
+
+	/*
+	 * Set the literal's value
+	 */
+
+	if(INTEGER_LIT == literal.type) {
+		if((MIN_NEGATIVE_INTEGER > nvalue) || (MAX_POSITIVE_INTEGER < nvalue)) {
+			error(INTEGER_OUT_OF_RANGE);
+			token = ERROR;
+			return;
+		}
+		literal.value.integer = (int) nvalue;
+	} else {
+		literal.value.real = nvalue;
+	}
+
+	*tokenp ='\0';
+	token   = NUMBER;
+}
+
+/*
+ * void get_string(void)    Extract a string token from the source file.
+ *                          NOTE: the quote, '\'', characters are stored
+ *                          in the token string, but not in the literal.
+ */
+
+void get_string(void)
+{
+	char *sp = literal.value.string;    // directly use literal string buffer
+
+	*tokenp++ = '\'';   // Insert quote character into token string buffer
+	get_char();
+
+	/*
+	 * Extract string
+	 */
+
+	while(EOF_CHAR != ch) {
+		/*
+		 * Two consecutive single quotes, '\'', represent single quote in
+		 * string.
+		 */
+
+		if('\'' == ch) {
+			*tokenp++ = ch;
+			get_char();
+			if('\'' != ch) break;
+		}
+		*tokenp++ = ch;
+		*sp++     = ch;
+		get_char();
+	}
+
+	*tokenp = '\0';
+	*sp     = '\0';
+	token   = STRING;
+
+	literal.type = STRING_LIT;
+}
+
+/*
+ * void get_special(void)   Extract a special token from source file.
+ *                          Only PERIOD is defined as special token
+ *                          at this time.
+ */
+
+void get_special(void)
+{
+	*tokenp++ = ch;         // Extract special token from source file
+
+	*tokenp = '\0';
+	token   = (('.' == ch) ? PERIOD : ERROR);   // Classify special token
+
+	get_char();             // Get next character from source file
+}
+
+/*
+ * void downshift_word(void)    Copy word token into word_string with all
+ *                              letters converted to lower case.
+ */
+
+void convert_to_lowercase(void)
+{
+	int  offset = 'a' - 'A';
+	char *wp    = word_string;
+	char *tp    = token_string;
+
+	/*
+	 * copy word token into word_string
+	 */
+
+	do {
+		*wp++ = ((('A' <= *tp) || ('Z' >= *tp)) ? *tp + offset : *tp);
+		tp++;
+	} while('\0' != *tp);
+
+	*wp = '\0';
+}
+
+/*
+ * void print_token(void)   Prints a token extracted from the source file
+ */
+
+void print_token(void)
+{
+	char line[MAX_PRINT_LINE_LENGTH];
+	char *symbol_string = symbol_strings[token];    // String matching token
+
+	switch(token){
+	case NUMBER :
+		if(INTEGER_LIT == literal.type) {
+			sprintf(line, "    >> %-16s %d (integer)\n",
+					symbol_string,
+					literal.value.integer               );
+		} else {
+			sprintf(line, "    >> %-16s %g (real)\n",
+					symbol_string,
+					literal.value.real               );
+		}
+		break;
+
+	case STRING :
+		sprintf(line, "    >> %-16s %-s (string)\n",
+				symbol_string,
+				literal.value.string                );
+		break;
+
+	default :
+		sprintf(line, "     >> %-16s %-s\n",
+				symbol_string,
+				token_string                );
+	}
+
+	print_line(line);
+}
+
+/*
+ * Source file operations
+ */
+
+/*
+ * void open_source_file(char name[])   Open the input source file,
+ *                                      and fetch first character.
+ */
+
+void open_source_file(char name[])
+{
+	if((NULL == name) || (NULL == (source_file = fopen(name, "r")))) {
+		printf("\n***** ERROR ***** Failed to open source file\n");
+		exit(-1);
+	}
+
+	/*
+	 * Fetch first character from the source file.
+	 * One character look-ahead is required by the scanner and parsing
+	 * routines.
+	 */
+
+	bufferp = "";	// Initialize the buffer pointer
+	get_char();     // Read first line and initialize look-ahead char variable
+}
+
+
+/*
+ * void close_source_file(void)     Close the source file
+ */
+
+void close_source_file(void)
+{
+	fclose(source_file);
+}
+
+/*
+ * void get_char(void)      Sets ch to the next character from the
+ *                          source buffer.
+ */
+
+void get_char(void)
+{
+	/*
+	 * If at end of current source line, read another line.
+	 * If at the end of file, set ch to EOF character and return.
+	 */
+
+	if('\0' == *bufferp) {
+		if(!get_source_line()) {
+			ch = EOF_CHAR;
+			return;
+		}
+
+		bufferp       = source_buffer;
+		buffer_offset = 0;
+	}
+
+	ch = *bufferp++;
+
+	/*
+	 * Special character processing:
+	 *
+	 *  '\t'       :    Increment buffer_offset up to the next multiple of
+	 *                  TAB_SIZE. Replace ch with a blank.
+	 *
+	 *  '\n', '\r' :    Replace ch with a blank.
+	 *
+	 * '{'         :    Skip over a comment and replace ch with a blank.
+	 */
+
+	switch(ch) {
+	case '\t' :
+		buffer_offset += TAB_SIZE - (buffer_offset % TAB_SIZE);
+		ch = ' ';
+		break;
+
+	case '\n' :     // new-line
+	case '\r' :     // carriage return
+	case '\f' :     // form feed
+	case '\v' :     // vertical tab
+		++buffer_offset;
+		ch = ' ';
+		break;
+
+	case '{' :
+		++buffer_offset;
+		skip_comment();
+		ch = ' ';
+		break;
+	}
+}
+
+/*
+ * void skip_comment(void)  Skip over a comment. Set ch to '}'.
+ */
+
+void skip_comment(void)
+{
+	do {
+		get_char();
+	} while(('}' != ch) || (EOF_CHAR != ch));
+}
+
+/*
+ * void skip_blanks(void)   Skip over blanks (and other white space)
+ *                          and leave ch pointing to first non-blank
+ *                          character.
+ */
+
+void skip_blanks(void)
+{
+	while(' ' == ch) get_char();
+}
+
+/*
+ * BOOLEAN get_source_line(void)    Read the next line from the source
+ *                                  file. If there was one, print it
+ *                                  out and return TRUE. Else at the
+ *                                  end of file, so return FALSE.
+ */
+
+BOOLEAN get_source_line(void)
+{
+    char print_buffer[MAX_SOURCE_LINE_LENGTH];
+
+    if(NULL != fgets(source_buffer, MAX_SOURCE_LINE_LENGTH, source_file)) {
+        ++line_number;
+        sprintf(print_buffer, "%4d %d: %s", line_number, level, source_buffer);
+        print_line(print_buffer);
+
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+/*
+ * void print_line(char line[])	Print out a line. Start a new page if
+ *                              current page is full.
+ */
+
+void print_line(char line[])
+{
+    char save_ch[2];
+    char *save_chp = NULL;
+
+    if(MAX_LINES_PER_PAGE < ++line_count) {
+        print_page_header();
+        line_count = 1;
+    }
+
+    if(MAX_PRINT_LINE_LENGTH < strlen(line)) {
+        save_chp = &line[MAX_PRINT_LINE_LENGTH];
+
+		int i;
+		for(i = 1; (' ' != *save_chp) && (MAX_BACK_TRACK_LENGTH > i); i++) {
+			--save_chp;
+		}
+    }
+
+    if(save_chp) {
+        save_ch[0] = save_chp[0]; save_chp[0] = '\n';
+        save_ch[1] = save_chp[1]; save_chp[1] = '\0';
+    }
+
+    printf("%s", line);
+
+    if(save_chp) {
+        save_chp[0] = save_ch[0]; save_chp[1] = save_ch[1];
+        printf("        ");
+        print_line(save_chp);
+    }
+}
+
+/*
+ *
+ * void init_page_header(char name[])   Initialize the page header globals
+ *
+ */
+
+void init_page_header(char name[])
+{
+    time_t timer;
+
+    /*
+     * Copy the source file name and open the source file.
+     */
+
+    strcpy(source_name, name);
+    source_file = fopen(source_name, "r");
+
+    /*
+     * Set the current date and time in the date string.
+     */
+
+    time(&timer);
+    strcpy(date, asctime(localtime(&timer)));
+}
+
+/*
+ * void print_page_header(void)	Print the page header at the top of the
+ *                              next page.
+ */
+
+void print_page_header(void)
+{
+    putchar(FORM_FEED_CHAR);
+    printf("Page %d   %s   %s\n\n", ++page_number, source_name, date);
+}

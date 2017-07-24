@@ -1,378 +1,383 @@
-19:58:19 **** Build of configuration Debug for project Lister ****
+10:03:48 **** Build of configuration Debug for project Token-Pascal ****
 make all 
-Building file: ../src/Lister.c
+Building file: ../src/Token-Pascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
+Finished building: ../src/Token-Pascal.c
  
-Building target: Lister
+Building target: Token-Pascal
 Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   
-Finished building target: Lister
+gcc  -o "Token-Pascal"  ./src/Token-Pascal.o   
+Finished building target: Token-Pascal
  
-19:58:59 **** Incremental Build of configuration Debug for project Lister ****
+10:03:54 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-19:59:15 **** Incremental Build of configuration Debug for project Lister ****
+16:24:19 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
-make: Nothing to be done for 'all'.
-19:59:50 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-make: Nothing to be done for 'all'.
-20:02:20 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-make: Nothing to be done for 'all'.
-20:02:37 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-make: Nothing to be done for 'all'.
-20:03:09 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-make: Nothing to be done for 'all'.
-20:03:17 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-make: Nothing to be done for 'all'.
-20:04:47 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-make: Nothing to be done for 'all'.
-20:06:08 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-Building file: ../src/Lister.c
+Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
- 
-Building target: Lister
-Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   
-Finished building target: Lister
- 
-20:10:48 **** Incremental Build of configuration Debug for project Lister ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+../src/ScannerPascal.c:40:2: error: redeclaration of enumerator ‘LETTER’
+  LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
+src/subdir.mk:24: recipe for target 'src/ScannerPascal.o' failed
+  ^
+In file included from ../src/ScannerPascal.c:20:0:
+../src/ScannerPascal.h:23:2: note: previous definition of ‘LETTER’ was here
+  LETTER, DIGIT, SPECIAL, EOF_CODE,
+  ^
+../src/ScannerPascal.c:40:10: error: redeclaration of enumerator ‘DIGIT’
+  LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
+          ^
+In file included from ../src/ScannerPascal.c:20:0:
+../src/ScannerPascal.h:23:10: note: previous definition of ‘DIGIT’ was here
+  LETTER, DIGIT, SPECIAL, EOF_CODE,
+          ^
+../src/ScannerPascal.c:40:24: error: redeclaration of enumerator ‘SPECIAL’
+  LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
+                        ^
+In file included from ../src/ScannerPascal.c:20:0:
+../src/ScannerPascal.h:23:17: note: previous definition of ‘SPECIAL’ was here
+  LETTER, DIGIT, SPECIAL, EOF_CODE,
+                 ^
+../src/ScannerPascal.c:40:33: error: redeclaration of enumerator ‘EOF_CODE’
+  LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
+                                 ^
+In file included from ../src/ScannerPascal.c:20:0:
+../src/ScannerPascal.h:23:26: note: previous definition of ‘EOF_CODE’ was here
+  LETTER, DIGIT, SPECIAL, EOF_CODE,
+                          ^
+../src/ScannerPascal.c:41:3: error: conflicting types for ‘CHAR_CODE’
+ } CHAR_CODE;
+   ^
+In file included from ../src/ScannerPascal.c:20:0:
+../src/ScannerPascal.h:24:3: note: previous declaration of ‘CHAR_CODE’ was here
+ } CHAR_CODE;
+   ^
+../src/ScannerPascal.c: In function ‘get_word’:
+../src/ScannerPascal.c:255:10: error: ‘WORD’ undeclared (first use in this function)
+  token = WORD;           // Set token type
+          ^
+../src/ScannerPascal.c:255:10: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [src/ScannerPascal.o] Error 1
+18:03:46 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
-Building file: ../src/Lister.c
+Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+../src/ScannerPascal.c: In function ‘get_word’:
+../src/ScannerPascal.c:247:10: error: ‘WORD’ undeclared (first use in this function)
+  token = WORD;           // Set token type
+          ^
+../src/ScannerPascal.c:247:10: note: each undeclared identifier is reported only once for each function it appears in
+src/subdir.mk:24: recipe for target 'src/ScannerPascal.o' failed
+make: *** [src/ScannerPascal.o] Error 1
+10:36:36 **** Clean-only build of configuration Debug for project Lister ****
+make clean 
+rm -rf  ./src/Lister.o  ./src/Lister.d  Lister
  
-Building target: Lister
-Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   -lm
-Finished building target: Lister
+10:36:36 **** Clean-only build of configuration Debug for project Token-Pascal ****
+make clean 
+rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
  
-20:23:44 **** Incremental Build of configuration Debug for project Lister ****
+10:36:36 **** Clean-only build of configuration Debug for project Tokenizer ****
+make clean 
+rm -rf  ./src/Tokenizer.o  ./src/Tokenizer.d  Tokenizer
+ 
+11:27:04 **** Build of configuration Debug for project Token-Pascal ****
 make all 
-Building file: ../src/Lister.c
+Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
- 
-Building target: Lister
-Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   -lm
-Finished building target: Lister
- 
-20:26:04 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-Building file: ../src/Lister.c
-Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
- 
-Building target: Lister
-Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   -lm
-Finished building target: Lister
- 
-22:05:40 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-Building file: ../src/Lister.c
-Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
- 
-Building target: Lister
-Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   -lm
-Finished building target: Lister
- 
-22:07:11 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-Building file: ../src/Lister.c
-Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
- 
-Building target: Lister
-Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   -lm
-Finished building target: Lister
- 
-08:20:21 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-Building file: ../src/Lister.c
-Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
- 
-Building target: Lister
-Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   -lm
-Finished building target: Lister
- 
-17:26:08 **** Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-../src/Tokenizer.c:125:1: warning: parameter names (without types) in function declaration
- void get_word(word);
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+../src/ScannerPascal.c:25:0: warning: "NUM_BITS_INT" redefined
+ #define NUM_BITS_INT    32
  ^
-../src/Tokenizer.c: In function ‘init_scanner’:
-../src/Tokenizer.c:178:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  for(ch = 0;   ch <  256; ch++) char_table[ch] = SPECIAL; // Init. all as SPECIAL
-  ^
-../src/Tokenizer.c:179:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  for(ch = '0'; ch <= '9'; ch++) char_table[ch] = NUMBER;     // Set '0'-'9' as NUMBER
-  ^
-../src/Tokenizer.c:180:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  for(ch = 'a'; ch <= 'z'; ch++) char_table[ch] = LETTER;  // Set 'a'-'z' as LETTER
-  ^
-../src/Tokenizer.c:181:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  for(ch = 'A'; ch <= 'Z'; ch++) char_table[ch] = LETTER;  // Set 'A'-'Z' as LETTER
-  ^
-../src/Tokenizer.c: In function ‘get_token’:
-../src/Tokenizer.c:213:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  switch(char_code(ch)) {
-  ^
-../src/Tokenizer.c: In function ‘get_word’:
-../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  while((LETTER == char_code(ch)) || (DIGIT == char_code(ch))) {
-  ^
-../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-../src/Tokenizer.c: In function ‘get_number’:
-../src/Tokenizer.c:269:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  } while(DIGIT == char_code(ch));
-  ^
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-17:27:05 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-../src/Tokenizer.c:125:1: warning: parameter names (without types) in function declaration
- void get_word(word);
+In file included from ../src/ScannerPascal.c:18:0:
+../src/common.h:26:0: note: this is the location of the previous definition
+ #define NUM_BITS_INT    16
  ^
-../src/Tokenizer.c: In function ‘get_token’:
-../src/Tokenizer.c:213:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  switch(char_code(ch)) {
-  ^
-../src/Tokenizer.c: In function ‘get_word’:
-../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  while((LETTER == char_code(ch)) || (DIGIT == char_code(ch))) {
-  ^
-../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-../src/Tokenizer.c: In function ‘get_number’:
-../src/Tokenizer.c:269:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  } while(DIGIT == char_code(ch));
-  ^
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-17:27:42 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-../src/Tokenizer.c:125:1: warning: parameter names (without types) in function declaration
- void get_word(word);
+../src/ScannerPascal.c:26:0: warning: "MAX_POSITIVE_INTEGER" redefined
+ #define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
  ^
-../src/Tokenizer.c: In function ‘get_word’:
-../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  while((LETTER == char_code(ch)) || (DIGIT == char_code(ch))) {
+In file included from ../src/ScannerPascal.c:18:0:
+../src/common.h:27:0: note: this is the location of the previous definition
+ #define MAX_POSITIVE_INTEGER     (~(1 << (NUM_BITS_INT - 1)))
+ ^
+../src/ScannerPascal.c: In function ‘get_number’:
+../src/ScannerPascal.c:377:2: warning: implicit declaration of function ‘pow’ [-Wimplicit-function-declaration]
+  if(0 != exponent) nvalue *= pow(10, exponent);
   ^
-../src/Tokenizer.c:239:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-../src/Tokenizer.c: In function ‘get_number’:
-../src/Tokenizer.c:269:2: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-  } while(DIGIT == char_code(ch));
+../src/ScannerPascal.c:377:30: warning: incompatible implicit declaration of built-in function ‘pow’
+  if(0 != exponent) nvalue *= pow(10, exponent);
+                              ^
+src/subdir.mk:24: recipe for target 'src/ScannerPascal.o' failed
+../src/ScannerPascal.c:26:61: warning: integer overflow in expression [-Woverflow]
+ #define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
+                                                             ^
+../src/ScannerPascal.c:384:42: note: in expansion of macro ‘MAX_POSITIVE_INTEGER’
+   if((MIN_NEGATIVE_INTEGER > nvalue) || (MAX_POSITIVE_INTEGER < nvalue)) {
+                                          ^
+../src/ScannerPascal.c: In function ‘is_reserved_word’:
+../src/ScannerPascal.c:652:11: error: incompatible types when assigning to type ‘TOKEN_CODE’ from type ‘char *’
+     token = rwp->string;
+           ^
+make: *** [src/ScannerPascal.o] Error 1
+11:28:03 **** Clean-only build of configuration Debug for project Token-Pascal ****
+make clean 
+rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
+ 
+11:28:28 **** Build of configuration Debug for project Token-Pascal ****
+make all 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+../src/ScannerPascal.c:25:0: warning: "NUM_BITS_INT" redefined
+ #define NUM_BITS_INT    32
+ ^
+In file included from ../src/ScannerPascal.c:18:0:
+../src/common.h:26:0: note: this is the location of the previous definition
+ #define NUM_BITS_INT    16
+ ^
+../src/ScannerPascal.c:26:0: warning: "MAX_POSITIVE_INTEGER" redefined
+ #define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
+ ^
+In file included from ../src/ScannerPascal.c:18:0:
+../src/common.h:27:0: note: this is the location of the previous definition
+src/subdir.mk:24: recipe for target 'src/ScannerPascal.o' failed
+ #define MAX_POSITIVE_INTEGER     (~(1 << (NUM_BITS_INT - 1)))
+ ^
+../src/ScannerPascal.c: In function ‘get_number’:
+../src/ScannerPascal.c:377:2: warning: implicit declaration of function ‘pow’ [-Wimplicit-function-declaration]
+  if(0 != exponent) nvalue *= pow(10, exponent);
   ^
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-17:28:52 **** Incremental Build of configuration Debug for project Tokenizer ****
+../src/ScannerPascal.c:377:30: warning: incompatible implicit declaration of built-in function ‘pow’
+  if(0 != exponent) nvalue *= pow(10, exponent);
+                              ^
+../src/ScannerPascal.c:26:61: warning: integer overflow in expression [-Woverflow]
+ #define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
+                                                             ^
+../src/ScannerPascal.c:384:42: note: in expansion of macro ‘MAX_POSITIVE_INTEGER’
+   if((MIN_NEGATIVE_INTEGER > nvalue) || (MAX_POSITIVE_INTEGER < nvalue)) {
+                                          ^
+../src/ScannerPascal.c: In function ‘is_reserved_word’:
+../src/ScannerPascal.c:652:11: error: incompatible types when assigning to type ‘TOKEN_CODE’ from type ‘char *’
+     token = rwp->string;
+           ^
+make: *** [src/ScannerPascal.o] Error 1
+11:34:30 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
-Building file: ../src/Tokenizer.c
+Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
  
-Building target: Tokenizer
+Building file: ../src/Token-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
+../src/Token-Pascal.c: In function ‘main’:
+../src/Token-Pascal.c:36:24: error: ‘token’ undeclared (first use in this function)
+      if(END_OF_FILE == token) {
+src/subdir.mk:24: recipe for target 'src/Token-Pascal.o' failed
+                        ^
+../src/Token-Pascal.c:36:24: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [src/Token-Pascal.o] Error 1
+11:35:37 **** Incremental Build of configuration Debug for project Token-Pascal ****
+make all 
+Building file: ../src/Token-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
+Finished building: ../src/Token-Pascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+../src/error.c: In function ‘error’:
+../src/error.c:109:6: warning: implicit declaration of function ‘print_line’ [-Wimplicit-function-declaration]
+      print_line(message_buffer);
+      ^
+../src/error.c:136:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+         exit(-TOO_MANY_SYNTAX_ERRORS);
+         ^
+../src/error.c:136:9: warning: incompatible implicit declaration of built-in function ‘exit’
+Finished building: ../src/error.c
+ 
+Building target: Token-Pascal
 Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   
+./src/ScannerPascal.o: In function `get_number':
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/ScannerPascal.c:372: undefined reference to `pow'
+makefile:30: recipe for target 'Token-Pascal' failed
+./src/error.o: In function `error':
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:106: undefined reference to `print_flag'
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:108: undefined reference to `print_flag'
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:119: undefined reference to `print_flag'
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:130: undefined reference to `print_flag'
+collect2: error: ld returned 1 exit status
+make: *** [Token-Pascal] Error 1
+11:35:57 **** Clean-only build of configuration Debug for project Token-Pascal ****
+make clean 
+rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
  
-17:31:57 **** Incremental Build of configuration Debug for project Tokenizer ****
+11:37:06 **** Build of configuration Debug for project Token-Pascal ****
+make all 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/Token-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
+Finished building: ../src/Token-Pascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+../src/error.c: In function ‘error’:
+../src/error.c:109:6: warning: implicit declaration of function ‘print_line’ [-Wimplicit-function-declaration]
+      print_line(message_buffer);
+      ^
+../src/error.c:136:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+         exit(-TOO_MANY_SYNTAX_ERRORS);
+         ^
+../src/error.c:136:9: warning: incompatible implicit declaration of built-in function ‘exit’
+Finished building: ../src/error.c
+ 
+Building target: Token-Pascal
+Invoking: GCC C Linker
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   
+./src/ScannerPascal.o: In function `get_number':
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/ScannerPascal.c:372: undefined reference to `pow'
+makefile:30: recipe for target 'Token-Pascal' failed
+./src/error.o: In function `error':
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:106: undefined reference to `print_flag'
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:108: undefined reference to `print_flag'
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:119: undefined reference to `print_flag'
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:130: undefined reference to `print_flag'
+collect2: error: ld returned 1 exit status
+make: *** [Token-Pascal] Error 1
+11:38:31 **** Clean-only build of configuration Debug for project Token-Pascal ****
+make clean 
+rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
+ 
+11:38:36 **** Clean-only build of configuration Debug for project Token-Pascal ****
+make clean 
+rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
+ 
+11:38:36 **** Build of configuration Debug for project Token-Pascal ****
+make all 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/Token-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
+Finished building: ../src/Token-Pascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+../src/error.c: In function ‘error’:
+../src/error.c:109:6: warning: implicit declaration of function ‘print_line’ [-Wimplicit-function-declaration]
+      print_line(message_buffer);
+      ^
+../src/error.c:136:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+         exit(-TOO_MANY_SYNTAX_ERRORS);
+         ^
+../src/error.c:136:9: warning: incompatible implicit declaration of built-in function ‘exit’
+Finished building: ../src/error.c
+ 
+Building target: Token-Pascal
+Invoking: GCC C Linker
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
+./src/error.o: In function `error':
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:106: undefined reference to `print_flag'
+makefile:30: recipe for target 'Token-Pascal' failed
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:108: undefined reference to `print_flag'
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:119: undefined reference to `print_flag'
+/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:130: undefined reference to `print_flag'
+collect2: error: ld returned 1 exit status
+make: *** [Token-Pascal] Error 1
+11:47:44 **** Incremental Build of configuration Debug for project Token-Pascal ****
+make all 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building target: Token-Pascal
+Invoking: GCC C Linker
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
+Finished building target: Token-Pascal
+ 
+13:09:29 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-17:40:55 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-18:01:03 **** Incremental Build of configuration Debug for project Tokenizer ****
+13:11:52 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-18:02:06 **** Incremental Build of configuration Debug for project Tokenizer ****
+13:16:17 **** Incremental Build of configuration Debug for project Token-Pascal ****
+make all 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/Token-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
+Finished building: ../src/Token-Pascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+../src/error.c: In function ‘error’:
+../src/error.c:109:6: warning: implicit declaration of function ‘print_line’ [-Wimplicit-function-declaration]
+      print_line(message_buffer);
+      ^
+../src/error.c:136:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+         exit(-TOO_MANY_SYNTAX_ERRORS);
+         ^
+../src/error.c:136:9: warning: incompatible implicit declaration of built-in function ‘exit’
+Finished building: ../src/error.c
+ 
+Building target: Token-Pascal
+Invoking: GCC C Linker
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
+Finished building target: Token-Pascal
+ 
+13:25:20 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-18:03:04 **** Incremental Build of configuration Debug for project Tokenizer ****
+13:29:54 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-18:03:33 **** Incremental Build of configuration Debug for project Tokenizer ****
+13:35:43 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-18:08:31 **** Incremental Build of configuration Debug for project Tokenizer ****
+13:38:47 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
-Building file: ../src/Tokenizer.c
+Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
  
-Building target: Tokenizer
+Building target: Token-Pascal
 Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
+Finished building target: Token-Pascal
  
-18:11:12 **** Incremental Build of configuration Debug for project Tokenizer ****
+13:43:10 **** Incremental Build of configuration Debug for project Token-Pascal ****
 make all 
-Building file: ../src/Tokenizer.c
+Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
  
-Building target: Tokenizer
+Building target: Token-Pascal
 Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
+Finished building target: Token-Pascal
  
-18:13:22 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-make: Nothing to be done for 'all'.
-18:13:42 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-make: Nothing to be done for 'all'.
-18:34:04 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-make: Nothing to be done for 'all'.
-18:36:37 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-make: Nothing to be done for 'all'.
-18:44:19 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-18:45:47 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-18:47:50 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-18:48:45 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-18:49:57 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-make: Nothing to be done for 'all'.
-18:59:04 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-19:02:37 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-19:04:19 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-Building file: ../src/Tokenizer.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
-Finished building: ../src/Tokenizer.c
- 
-Building target: Tokenizer
-Invoking: GCC C Linker
-gcc  -o "Tokenizer"  ./src/Tokenizer.o   
-Finished building target: Tokenizer
- 
-19:24:07 **** Incremental Build of configuration Debug for project Tokenizer ****
-make all 
-make: Nothing to be done for 'all'.

@@ -1,15 +1,7 @@
-08:20:21 **** Incremental Build of configuration Debug for project Lister ****
-make all 
-Building file: ../src/Lister.c
-Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
-Finished building: ../src/Lister.c
- 
-Building target: Lister
-Invoking: GCC C Linker
-gcc  -o "Lister"  ./src/Lister.o   -lm
-Finished building target: Lister
+10:36:36 **** Clean-only build of configuration Debug for project Lister ****
+make clean 
+rm -rf  ./src/Lister.o  ./src/Lister.d  Lister
  
 
-08:20:21 Build Finished (took 693ms)
+10:36:36 Build Finished (took 245ms)
 
