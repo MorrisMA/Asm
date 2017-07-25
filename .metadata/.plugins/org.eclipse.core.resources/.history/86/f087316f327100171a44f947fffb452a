@@ -1,0 +1,114 @@
+/*
+ ============================================================================
+ Name        : Compactor-Pascal.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#include "common.h"
+#include "ScannerPascal.h"
+
+#define MAX_OUTPUT_RECORD_LENGTH 80
+
+typedef enum {
+	DELIMITER, NONDELIMITER,
+} TOKEN_CLASS;
+
+extern TOKEN_CODE token;
+extern char       token_string[];
+extern BOOLEAN    print_flag;
+
+/*
+ * Globals
+ */
+
+int  record_length;
+char *recp;
+
+char output_record[MAX_OUTPUT_RECORD_LENGTH];
+
+TOKEN_CLASS token_class(void);
+
+int main(int argc, char *argv[])
+{
+    TOKEN_CLASS class, prev_class;
+
+	/*
+     * Initialize Scanner.
+     */
+
+	init_scanner(argv[1]);
+	print_flag = FALSE;
+
+	/*
+	 * Initialize Compactor Utility
+	 */
+
+	prev_class = DELIMITER;
+
+	recp  = output_record;
+	*recp = '\0';
+
+	record_length = 0;
+
+    /*
+     * Repeatedly get tokens until period or end of file.
+     */
+
+    do {
+    	get_token();
+    	if(END_OF_FILE == token) break;
+    	class = token_class();
+
+    	/*
+    	 * Append a blank only if two adjacent nondelimiter tokens found.
+    	 */
+
+    	if((NONDELIMITER == prev_class) && (NONDELIMITER == class)) {
+    		append_blank();
+    	}
+    	append_token();
+
+    	prev_class = class;
+    } while(PERIOD != token);
+
+    /*
+     * Flush last output record if it partially filled.
+     */
+
+    if(0 < record_length) flush_output_record();
+
+    quit_scanner();
+    return EXIT_SUCCESS;
+}
+
+/*
+ * TOKEN_CLASS token_class(void)    Convert tokens returned by scanner/tokenizer
+ */
+
+TOKEN_CLASS token_class(void)
+{
+	/*
+	 * Nondelimiters:   identifiers, numbers, and reserved words
+	 * delimiters:      strings and special symbols
+	 *
+	 *      NOTE:   the token tables are configured so that all special
+	 *              characters tokens precede all the reserved words.
+	 */
+
+	switch(token){
+	case IDENTIFIER :
+	case NUMBER :
+		return (NONDELIMITER);
+
+	default :
+		return ((AND > token) ? DELIMITER : NONDELIMITER);
+	}
+}

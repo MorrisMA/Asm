@@ -1,383 +1,176 @@
-10:03:48 **** Build of configuration Debug for project Token-Pascal ****
+14:31:44 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
 make all 
-Building file: ../src/Token-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
-Finished building: ../src/Token-Pascal.c
- 
-Building target: Token-Pascal
+Building target: Compactor-Pascal
 Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/Token-Pascal.o   
-Finished building target: Token-Pascal
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
  
-10:03:54 **** Incremental Build of configuration Debug for project Token-Pascal ****
+07:15:51 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
 make all 
-make: Nothing to be done for 'all'.
-16:24:19 **** Incremental Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
+Building file: ../src/Compactor-Pascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-../src/ScannerPascal.c:40:2: error: redeclaration of enumerator ‘LETTER’
-  LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
-src/subdir.mk:24: recipe for target 'src/ScannerPascal.o' failed
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
+../src/Compactor-Pascal.c: In function ‘main’:
+../src/Compactor-Pascal.c:75:7: warning: implicit declaration of function ‘append_blank’ [-Wimplicit-function-declaration]
+       append_blank();
+       ^
+../src/Compactor-Pascal.c:77:6: warning: implicit declaration of function ‘append_token’ [-Wimplicit-function-declaration]
+      append_token();
+      ^
+../src/Compactor-Pascal.c:86:5: warning: implicit declaration of function ‘flush_output_record’ [-Wimplicit-function-declaration]
+     if(0 < record_length) flush_output_record();
+     ^
+../src/Compactor-Pascal.c: In function ‘append’:
+../src/Compactor-Pascal.c:127:3: warning: implicit declaration of function ‘strcat’ [-Wimplicit-function-declaration]
+   strcat(output_record, " ");
+   ^
+../src/Compactor-Pascal.c:127:3: warning: incompatible implicit declaration of built-in function ‘strcat’
+../src/Compactor-Pascal.c: At top level:
+../src/Compactor-Pascal.c:136:6: warning: conflicting types for ‘append_token’
+ void append_token(void)
+      ^
+../src/Compactor-Pascal.c:77:6: note: previous implicit declaration of ‘append_token’ was here
+      append_token();
+      ^
+../src/Compactor-Pascal.c: In function ‘append_token’:
+../src/Compactor-Pascal.c:140:2: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+  token_length = strlen(token_string);
   ^
-In file included from ../src/ScannerPascal.c:20:0:
-../src/ScannerPascal.h:23:2: note: previous definition of ‘LETTER’ was here
-  LETTER, DIGIT, SPECIAL, EOF_CODE,
-  ^
-../src/ScannerPascal.c:40:10: error: redeclaration of enumerator ‘DIGIT’
-  LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
-          ^
-In file included from ../src/ScannerPascal.c:20:0:
-../src/ScannerPascal.h:23:10: note: previous definition of ‘DIGIT’ was here
-  LETTER, DIGIT, SPECIAL, EOF_CODE,
-          ^
-../src/ScannerPascal.c:40:24: error: redeclaration of enumerator ‘SPECIAL’
-  LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
-                        ^
-In file included from ../src/ScannerPascal.c:20:0:
-../src/ScannerPascal.h:23:17: note: previous definition of ‘SPECIAL’ was here
-  LETTER, DIGIT, SPECIAL, EOF_CODE,
+../src/Compactor-Pascal.c:140:17: warning: incompatible implicit declaration of built-in function ‘strlen’
+  token_length = strlen(token_string);
                  ^
-../src/ScannerPascal.c:40:33: error: redeclaration of enumerator ‘EOF_CODE’
-  LETTER, DIGIT, QUOTE, SPECIAL, EOF_CODE,
-                                 ^
-In file included from ../src/ScannerPascal.c:20:0:
-../src/ScannerPascal.h:23:26: note: previous definition of ‘EOF_CODE’ was here
-  LETTER, DIGIT, SPECIAL, EOF_CODE,
-                          ^
-../src/ScannerPascal.c:41:3: error: conflicting types for ‘CHAR_CODE’
- } CHAR_CODE;
-   ^
-In file included from ../src/ScannerPascal.c:20:0:
-../src/ScannerPascal.h:24:3: note: previous declaration of ‘CHAR_CODE’ was here
- } CHAR_CODE;
-   ^
-../src/ScannerPascal.c: In function ‘get_word’:
-../src/ScannerPascal.c:255:10: error: ‘WORD’ undeclared (first use in this function)
-  token = WORD;           // Set token type
-          ^
-../src/ScannerPascal.c:255:10: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [src/ScannerPascal.o] Error 1
-18:03:46 **** Incremental Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-../src/ScannerPascal.c: In function ‘get_word’:
-../src/ScannerPascal.c:247:10: error: ‘WORD’ undeclared (first use in this function)
-  token = WORD;           // Set token type
-          ^
-../src/ScannerPascal.c:247:10: note: each undeclared identifier is reported only once for each function it appears in
-src/subdir.mk:24: recipe for target 'src/ScannerPascal.o' failed
-make: *** [src/ScannerPascal.o] Error 1
-10:36:36 **** Clean-only build of configuration Debug for project Lister ****
-make clean 
-rm -rf  ./src/Lister.o  ./src/Lister.d  Lister
- 
-10:36:36 **** Clean-only build of configuration Debug for project Token-Pascal ****
-make clean 
-rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
- 
-10:36:36 **** Clean-only build of configuration Debug for project Tokenizer ****
-make clean 
-rm -rf  ./src/Tokenizer.o  ./src/Tokenizer.d  Tokenizer
- 
-11:27:04 **** Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-../src/ScannerPascal.c:25:0: warning: "NUM_BITS_INT" redefined
- #define NUM_BITS_INT    32
- ^
-In file included from ../src/ScannerPascal.c:18:0:
-../src/common.h:26:0: note: this is the location of the previous definition
- #define NUM_BITS_INT    16
- ^
-../src/ScannerPascal.c:26:0: warning: "MAX_POSITIVE_INTEGER" redefined
- #define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
- ^
-In file included from ../src/ScannerPascal.c:18:0:
-../src/common.h:27:0: note: this is the location of the previous definition
- #define MAX_POSITIVE_INTEGER     (~(1 << (NUM_BITS_INT - 1)))
- ^
-../src/ScannerPascal.c: In function ‘get_number’:
-../src/ScannerPascal.c:377:2: warning: implicit declaration of function ‘pow’ [-Wimplicit-function-declaration]
-  if(0 != exponent) nvalue *= pow(10, exponent);
+../src/Compactor-Pascal.c:145:2: warning: incompatible implicit declaration of built-in function ‘strcat’
+  strcat(output_record, token_string);
   ^
-../src/ScannerPascal.c:377:30: warning: incompatible implicit declaration of built-in function ‘pow’
-  if(0 != exponent) nvalue *= pow(10, exponent);
-                              ^
-src/subdir.mk:24: recipe for target 'src/ScannerPascal.o' failed
-../src/ScannerPascal.c:26:61: warning: integer overflow in expression [-Woverflow]
- #define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
-                                                             ^
-../src/ScannerPascal.c:384:42: note: in expansion of macro ‘MAX_POSITIVE_INTEGER’
-   if((MIN_NEGATIVE_INTEGER > nvalue) || (MAX_POSITIVE_INTEGER < nvalue)) {
-                                          ^
-../src/ScannerPascal.c: In function ‘is_reserved_word’:
-../src/ScannerPascal.c:652:11: error: incompatible types when assigning to type ‘TOKEN_CODE’ from type ‘char *’
-     token = rwp->string;
-           ^
-make: *** [src/ScannerPascal.o] Error 1
-11:28:03 **** Clean-only build of configuration Debug for project Token-Pascal ****
-make clean 
-rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
+Finished building: ../src/Compactor-Pascal.c
  
-11:28:28 **** Build of configuration Debug for project Token-Pascal ****
+Building target: Compactor-Pascal
+Invoking: GCC C Linker
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+makefile:30: recipe for target 'Compactor-Pascal' failed
+./src/Compactor-Pascal.o: In function `main':
+/home/morrisma/Development/CProjects/Asm/Compactor-Pascal/Debug/../src/Compactor-Pascal.c:75: undefined reference to `append_blank'
+/home/morrisma/Development/CProjects/Asm/Compactor-Pascal/Debug/../src/Compactor-Pascal.c:86: undefined reference to `flush_output_record'
+./src/Compactor-Pascal.o: In function `append':
+/home/morrisma/Development/CProjects/Asm/Compactor-Pascal/Debug/../src/Compactor-Pascal.c:125: undefined reference to `flush_output_record'
+./src/Compactor-Pascal.o: In function `append_token':
+/home/morrisma/Development/CProjects/Asm/Compactor-Pascal/Debug/../src/Compactor-Pascal.c:142: undefined reference to `flush_output_record'
+collect2: error: ld returned 1 exit status
+make: *** [Compactor-Pascal] Error 1
+07:20:08 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
 make all 
-Building file: ../src/ScannerPascal.c
+Building file: ../src/Compactor-Pascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-../src/ScannerPascal.c:25:0: warning: "NUM_BITS_INT" redefined
- #define NUM_BITS_INT    32
- ^
-In file included from ../src/ScannerPascal.c:18:0:
-../src/common.h:26:0: note: this is the location of the previous definition
- #define NUM_BITS_INT    16
- ^
-../src/ScannerPascal.c:26:0: warning: "MAX_POSITIVE_INTEGER" redefined
- #define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
- ^
-In file included from ../src/ScannerPascal.c:18:0:
-../src/common.h:27:0: note: this is the location of the previous definition
-src/subdir.mk:24: recipe for target 'src/ScannerPascal.o' failed
- #define MAX_POSITIVE_INTEGER     (~(1 << (NUM_BITS_INT - 1)))
- ^
-../src/ScannerPascal.c: In function ‘get_number’:
-../src/ScannerPascal.c:377:2: warning: implicit declaration of function ‘pow’ [-Wimplicit-function-declaration]
-  if(0 != exponent) nvalue *= pow(10, exponent);
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
+../src/Compactor-Pascal.c: In function ‘append_blank’:
+../src/Compactor-Pascal.c:136:3: warning: implicit declaration of function ‘strcat’ [-Wimplicit-function-declaration]
+   strcat(output_record, " ");
+   ^
+../src/Compactor-Pascal.c:136:3: warning: incompatible implicit declaration of built-in function ‘strcat’
+../src/Compactor-Pascal.c: In function ‘append_token’:
+../src/Compactor-Pascal.c:149:2: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+  token_length = strlen(token_string);
   ^
-../src/ScannerPascal.c:377:30: warning: incompatible implicit declaration of built-in function ‘pow’
-  if(0 != exponent) nvalue *= pow(10, exponent);
-                              ^
-../src/ScannerPascal.c:26:61: warning: integer overflow in expression [-Woverflow]
- #define MAX_POSITIVE_INTEGER     ((1 << (NUM_BITS_INT - 1)) - 1)
-                                                             ^
-../src/ScannerPascal.c:384:42: note: in expansion of macro ‘MAX_POSITIVE_INTEGER’
-   if((MIN_NEGATIVE_INTEGER > nvalue) || (MAX_POSITIVE_INTEGER < nvalue)) {
-                                          ^
-../src/ScannerPascal.c: In function ‘is_reserved_word’:
-../src/ScannerPascal.c:652:11: error: incompatible types when assigning to type ‘TOKEN_CODE’ from type ‘char *’
-     token = rwp->string;
-           ^
-make: *** [src/ScannerPascal.o] Error 1
-11:34:30 **** Incremental Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-Finished building: ../src/ScannerPascal.c
+../src/Compactor-Pascal.c:149:17: warning: incompatible implicit declaration of built-in function ‘strlen’
+  token_length = strlen(token_string);
+                 ^
+../src/Compactor-Pascal.c:154:2: warning: incompatible implicit declaration of built-in function ‘strcat’
+  strcat(output_record, token_string);
+  ^
+Finished building: ../src/Compactor-Pascal.c
  
-Building file: ../src/Token-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
-../src/Token-Pascal.c: In function ‘main’:
-../src/Token-Pascal.c:36:24: error: ‘token’ undeclared (first use in this function)
-      if(END_OF_FILE == token) {
-src/subdir.mk:24: recipe for target 'src/Token-Pascal.o' failed
-                        ^
-../src/Token-Pascal.c:36:24: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [src/Token-Pascal.o] Error 1
-11:35:37 **** Incremental Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/Token-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
-Finished building: ../src/Token-Pascal.c
- 
-Building file: ../src/error.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
-../src/error.c: In function ‘error’:
-../src/error.c:109:6: warning: implicit declaration of function ‘print_line’ [-Wimplicit-function-declaration]
-      print_line(message_buffer);
-      ^
-../src/error.c:136:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
-         exit(-TOO_MANY_SYNTAX_ERRORS);
-         ^
-../src/error.c:136:9: warning: incompatible implicit declaration of built-in function ‘exit’
-Finished building: ../src/error.c
- 
-Building target: Token-Pascal
+Building target: Compactor-Pascal
 Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   
-./src/ScannerPascal.o: In function `get_number':
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/ScannerPascal.c:372: undefined reference to `pow'
-makefile:30: recipe for target 'Token-Pascal' failed
-./src/error.o: In function `error':
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:106: undefined reference to `print_flag'
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:108: undefined reference to `print_flag'
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:119: undefined reference to `print_flag'
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:130: undefined reference to `print_flag'
-collect2: error: ld returned 1 exit status
-make: *** [Token-Pascal] Error 1
-11:35:57 **** Clean-only build of configuration Debug for project Token-Pascal ****
-make clean 
-rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
  
-11:37:06 **** Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-Finished building: ../src/ScannerPascal.c
- 
-Building file: ../src/Token-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
-Finished building: ../src/Token-Pascal.c
- 
-Building file: ../src/error.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
-../src/error.c: In function ‘error’:
-../src/error.c:109:6: warning: implicit declaration of function ‘print_line’ [-Wimplicit-function-declaration]
-      print_line(message_buffer);
-      ^
-../src/error.c:136:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
-         exit(-TOO_MANY_SYNTAX_ERRORS);
-         ^
-../src/error.c:136:9: warning: incompatible implicit declaration of built-in function ‘exit’
-Finished building: ../src/error.c
- 
-Building target: Token-Pascal
-Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   
-./src/ScannerPascal.o: In function `get_number':
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/ScannerPascal.c:372: undefined reference to `pow'
-makefile:30: recipe for target 'Token-Pascal' failed
-./src/error.o: In function `error':
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:106: undefined reference to `print_flag'
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:108: undefined reference to `print_flag'
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:119: undefined reference to `print_flag'
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:130: undefined reference to `print_flag'
-collect2: error: ld returned 1 exit status
-make: *** [Token-Pascal] Error 1
-11:38:31 **** Clean-only build of configuration Debug for project Token-Pascal ****
-make clean 
-rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
- 
-11:38:36 **** Clean-only build of configuration Debug for project Token-Pascal ****
-make clean 
-rm -rf  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o  ./src/ScannerPascal.d ./src/Token-Pascal.d ./src/error.d  Token-Pascal
- 
-11:38:36 **** Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-Finished building: ../src/ScannerPascal.c
- 
-Building file: ../src/Token-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
-Finished building: ../src/Token-Pascal.c
- 
-Building file: ../src/error.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
-../src/error.c: In function ‘error’:
-../src/error.c:109:6: warning: implicit declaration of function ‘print_line’ [-Wimplicit-function-declaration]
-      print_line(message_buffer);
-      ^
-../src/error.c:136:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
-         exit(-TOO_MANY_SYNTAX_ERRORS);
-         ^
-../src/error.c:136:9: warning: incompatible implicit declaration of built-in function ‘exit’
-Finished building: ../src/error.c
- 
-Building target: Token-Pascal
-Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
-./src/error.o: In function `error':
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:106: undefined reference to `print_flag'
-makefile:30: recipe for target 'Token-Pascal' failed
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:108: undefined reference to `print_flag'
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:119: undefined reference to `print_flag'
-/home/morrisma/Development/CProjects/Asm/Token-Pascal/Debug/../src/error.c:130: undefined reference to `print_flag'
-collect2: error: ld returned 1 exit status
-make: *** [Token-Pascal] Error 1
-11:47:44 **** Incremental Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-Finished building: ../src/ScannerPascal.c
- 
-Building target: Token-Pascal
-Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
-Finished building target: Token-Pascal
- 
-13:09:29 **** Incremental Build of configuration Debug for project Token-Pascal ****
+07:20:39 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-13:11:52 **** Incremental Build of configuration Debug for project Token-Pascal ****
+07:22:22 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+make all 
+Building file: ../src/Compactor-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
+Finished building: ../src/Compactor-Pascal.c
+ 
+Building target: Compactor-Pascal
+Invoking: GCC C Linker
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
+ 
+07:23:06 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+make all 
+Building file: ../src/Compactor-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
+Finished building: ../src/Compactor-Pascal.c
+ 
+Building target: Compactor-Pascal
+Invoking: GCC C Linker
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
+ 
+07:24:32 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-13:16:17 **** Incremental Build of configuration Debug for project Token-Pascal ****
+07:25:15 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+make all 
+Building file: ../src/Compactor-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
+Finished building: ../src/Compactor-Pascal.c
+ 
+Building target: Compactor-Pascal
+Invoking: GCC C Linker
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
+ 
+07:27:08 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+make all 
+make: Nothing to be done for 'all'.
+07:27:18 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+make all 
+Building file: ../src/Compactor-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
+Finished building: ../src/Compactor-Pascal.c
+ 
+Building target: Compactor-Pascal
+Invoking: GCC C Linker
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
+ 
+07:27:26 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+make all 
+make: Nothing to be done for 'all'.
+07:34:07 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+make all 
+make: Nothing to be done for 'all'.
+07:39:57 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
 make all 
 Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
 Finished building: ../src/ScannerPascal.c
  
-Building file: ../src/Token-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
-Finished building: ../src/Token-Pascal.c
- 
-Building file: ../src/error.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
-../src/error.c: In function ‘error’:
-../src/error.c:109:6: warning: implicit declaration of function ‘print_line’ [-Wimplicit-function-declaration]
-      print_line(message_buffer);
-      ^
-../src/error.c:136:9: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
-         exit(-TOO_MANY_SYNTAX_ERRORS);
-         ^
-../src/error.c:136:9: warning: incompatible implicit declaration of built-in function ‘exit’
-Finished building: ../src/error.c
- 
-Building target: Token-Pascal
+Building target: Compactor-Pascal
 Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
-Finished building target: Token-Pascal
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
  
-13:25:20 **** Incremental Build of configuration Debug for project Token-Pascal ****
+07:40:27 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-13:29:54 **** Incremental Build of configuration Debug for project Token-Pascal ****
+07:40:50 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
 make all 
-make: Nothing to be done for 'all'.
-13:35:43 **** Incremental Build of configuration Debug for project Token-Pascal ****
-make all 
-make: Nothing to be done for 'all'.
-13:38:47 **** Incremental Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
+Building file: ../src/Compactor-Pascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-Finished building: ../src/ScannerPascal.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
+Finished building: ../src/Compactor-Pascal.c
  
-Building target: Token-Pascal
+Building target: Compactor-Pascal
 Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
-Finished building target: Token-Pascal
- 
-13:43:10 **** Incremental Build of configuration Debug for project Token-Pascal ****
-make all 
-Building file: ../src/ScannerPascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
-Finished building: ../src/ScannerPascal.c
- 
-Building target: Token-Pascal
-Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
-Finished building target: Token-Pascal
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
  

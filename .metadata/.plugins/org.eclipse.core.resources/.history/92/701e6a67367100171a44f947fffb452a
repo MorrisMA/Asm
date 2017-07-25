@@ -814,16 +814,13 @@ void skip_blanks(void)
 
 BOOLEAN get_source_line(void)
 {
-    char print_buffer[MAX_SOURCE_LINE_LENGTH + 9];
+    char print_buffer[MAX_SOURCE_LINE_LENGTH];
 
     if(NULL != fgets(source_buffer, MAX_SOURCE_LINE_LENGTH, source_file)) {
         ++line_number;
-        if(print_flag) {
-            sprintf(print_buffer, "%4d %d: %s",
-            		line_number,
-					level, source_buffer);
-            print_line(print_buffer);
-        }
+        sprintf(print_buffer, "%4d %d: %s", line_number, level, source_buffer);
+        print_line(print_buffer);
+
         return TRUE;
     } else {
         return FALSE;
