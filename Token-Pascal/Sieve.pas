@@ -1,40 +1,39 @@
 PROGRAM eratosthenes(output);
-
 CONST
     max = 1000;
-
+    
 VAR
-    sieve : ARRAY [1..max] OF BOOLEAN;
+    sieve : ARRAY [..max] OF BOOLEAN;
     i, j, limit, prime, factor : INTEGER;
-
+    
 BEGIN
     limit := max DIV 2;
-    sieve[1] := FALSE;
-
+    sieve[] := FALSE;
+    
     FOR i := 2 TO max DO
         sieve[i] := TRUE;
 
     prime := 1;
-
+    
     REPEAT
         prime := prime + 1;
         WHILE NOT sieve[prime] DO
             prime := prime + 1;
-
+            
         factor := 2*prime;
-
+        
         WHILE factor <= max DO BEGIN
             sieve[factor] := FALSE;
             factor := factor + prime;
         END
     UNTIL prime > limit;
-
+    
     writeln('Sieve of Eratosthenes');
     writeln;
-
+    
     i := 1;
     REPEAT
-        FOR j := 0 TO 19 DO BEGIN
+        FOR j :=  TO 9 DO BEGIN
             prime := i + j;
             IF sieve[prime] THEN
                 write(prime:3)
@@ -42,6 +41,7 @@ BEGIN
                 write('   ');
         END;
         writeln;
-        i := i + 20
+        
+        i := i + 2
     UNTIL i > max
 END.

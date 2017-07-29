@@ -66,4 +66,6 @@ void print_token(void);
 void open_source_file(char name[]);
 void close_source_file(void);
 
+void print_line(char line[]);
+
 #endif /* SCANNERPASCAL_H_ */

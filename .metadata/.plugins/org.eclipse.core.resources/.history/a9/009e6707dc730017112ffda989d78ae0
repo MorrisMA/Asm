@@ -1,0 +1,164 @@
+/*
+ ============================================================================
+ Name        : XRef.c
+ Author      : Michael A. Morris
+ Version     : 0.0.1
+ Copyright   : Copyright 2017, GPLv3
+ Description : Cross-Reference Program in C, ANSI-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+#include "common.h"
+#include "symtab.h"
+#include "ScannerPascal.h"
+
+#define MAX_LINENUMS_PER_LINE 10
+
+/*
+ * Line number item and list header
+ */
+
+typedef struct linenum_item {
+	struct linenum_item *next;
+	int                 line_number;
+} LINENUM_ITEM, *LINENUM_ITEM_PTR;
+
+typedef struct {
+    LINENUM_ITEM_PTR first_linenum, last_linenum;
+} LINENUM_HEADER, *LINENUM_HEADER_PTR;
+
+/*
+ * Externals
+ */
+
+extern int        line_number;
+extern TOKEN_CODE token;
+extern char       word_string[];
+
+extern SYMTAB_NODE_PTR symtab_root;
+
+int main(int argc, char *argv[])
+{
+	SYMTAB_NODE_PTR    np;
+	LINENUM_HEADER_PTR hp;
+
+	init_scanner(argv[1]);
+
+	/*
+	 * Repeatedly process tokens until period or EOF detected.
+	 */
+
+	do {
+		get_token();
+		if(END_OF_FILE == token) break;
+
+		if(IDENTIFIER == token) {
+			/*
+			 * Enter each Identifier into the symbol table
+			 * if not already in there, and record the current
+			 * line number in the symbol table entry.
+			 */
+
+			np = search_symtab(word_string, symtab_root);
+		    if((NULL == np)) {
+		    	np = enter_symtab(word_string, &symtab_root);
+		    	hp = alloc_struct(LINENUM_HEADER);
+		    	hp->first_linenum = hp->last_linenum = NULL;
+		    	np->info = (char *) hp;
+		    }
+		    record_line_number(np, line_number);
+		}
+	} while(PERIOD != token);
+
+	/*
+	 * Print out the cross-reference listing
+	 */
+
+	printf("\n\nCross-Reference");
+	printf(  "\n---------------\n");
+
+	print_xref(symtab_root);
+
+	quit_scanner();
+
+	return EXIT_SUCCESS;
+}
+
+/*
+ * void record_line_number(SYMTAB_NODE_PTR np, int number)
+ *
+ *      Record line number in the symbol table entry.
+ */
+
+void record_line_number(SYMTAB_NODE_PTR np, int number)
+{
+	LINENUM_ITEM_PTR   ip;
+	LINENUM_HEADER_PTR hp;
+
+	/*
+	 * Create a new line number item.
+	 */
+
+	ip = alloc_struct(LINENUM_ITEM);
+	ip->line_number = number;
+	ip->next = NULL;
+
+	/*
+	 * ... and link to the end of the list for this symbol table entry.
+	 */
+
+	hp = (LINENUM_HEADER_PTR) np->info;
+	if(NULL == hp->first_linenum) {
+		hp->first_linenum = hp->last_linenum = ip;
+	} else {
+		(hp->last_linenum)->next = ip;
+		hp->last_linenum = ip;
+	}
+}
+
+/*
+ *  void print_xref(SYMTAB_NODE_PTR np)     Print the symbol names and
+ *                                          line numbers in alphabetical
+ *                                          order.
+ */
+
+void print_xref(SYMTAB_NODE_PTR np)
+{
+	int n;
+
+	LINENUM_ITEM_PTR   ip;
+	LINENUM_HEADER_PTR hp;
+
+	if(NULL == np) return;
+
+	print_xref(np->left);
+
+	/*
+	 * then print the root of the subtree with at most
+	 * MAX_LINENUMS_PER_LINE.
+	 */
+
+	printf("\n%-16s   ", np->name);
+	n  = ((strlen(np->name) > 16) ? 0 : MAX_LINENUMS_PER_LINE);
+	hp = (LINENUM_HEADER_PTR) np->info;
+	for(ip = hp->first_linenum; ip != NULL; ip = ip->next) {
+		if(0 == n) {
+			printf("\n%-16s   ", " ");
+			n = MAX_LINENUMS_PER_LINE;
+		}
+		printf(" %4d", ip->line_number);
+		--n;
+	}
+	printf("\n");
+
+	/*
+	 * Print the right hand sub-tree.
+	 */
+
+	print_xref(np->right);
+}

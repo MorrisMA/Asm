@@ -11,6 +11,7 @@
 
 #include "common.h"
 #include "error.h"
+#include "ScannerPascal.h"
 
 extern char    *tokenp;
 extern BOOLEAN print_flag;

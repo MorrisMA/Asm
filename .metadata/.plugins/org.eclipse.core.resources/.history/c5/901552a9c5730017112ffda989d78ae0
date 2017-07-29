@@ -1,0 +1,44 @@
+/*
+ * symtab.c
+ *
+ *  Created on: Jul 28, 2017
+ *      Author: morrisma
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "common.h"
+#include "error.h"
+#include "symtab.h"
+
+/*
+ * Globals
+ */
+
+SYMTAB_NODE_PTR symtab_root = NULL;     // top level symbol table pointer
+
+/*
+ * SYMTAB_NODE_PTR search_symtab(char *name, SYMTAB_NODE_PTR np)
+ *
+ *      Search for name in the the symbol table pointed to by np. Return
+ *      a pointer to the entry if found, or NULL is not found.
+ */
+
+SYMTAB_NODE_PTR search_symtab(char *name, SYMTAB_NODE_PTR np)
+{
+	int cmp;
+
+	/*
+	 * Loop to check each node in the referenced symbol table. Return if
+	 * there is a match, else continue search down the left or right
+	 * sub-tree.
+	 */
+
+	while(NULL != np) {
+		cmp = strcmp(name, np->name);
+		if(0 == cmp) return(np);                    // name in symbol table
+		np = ((cmp < 0) ? np->left : np->right);    // return sub-tree
+	}
+	return(NULL);
+}

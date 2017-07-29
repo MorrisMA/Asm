@@ -10,6 +10,8 @@
 #ifndef ERROR_H_
 #define ERROR_H_
 
+#include <stdlib.h>
+
 #define MAX_SYNTAX_ERRORS 25
 
 typedef enum {

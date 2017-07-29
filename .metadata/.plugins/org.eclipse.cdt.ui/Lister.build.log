@@ -1,7 +1,6 @@
-10:36:36 **** Clean-only build of configuration Debug for project Lister ****
-make clean 
-rm -rf  ./src/Lister.o  ./src/Lister.d  Lister
- 
+17:13:16 **** Incremental Build of configuration Debug for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
 
-10:36:36 Build Finished (took 245ms)
+17:13:16 Build Finished (took 105ms)
 

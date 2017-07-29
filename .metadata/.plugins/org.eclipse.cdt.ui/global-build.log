@@ -1,176 +1,108 @@
-14:31:44 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-Building target: Compactor-Pascal
-Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-Finished building target: Compactor-Pascal
- 
-07:15:51 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-Building file: ../src/Compactor-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
-../src/Compactor-Pascal.c: In function ‘main’:
-../src/Compactor-Pascal.c:75:7: warning: implicit declaration of function ‘append_blank’ [-Wimplicit-function-declaration]
-       append_blank();
-       ^
-../src/Compactor-Pascal.c:77:6: warning: implicit declaration of function ‘append_token’ [-Wimplicit-function-declaration]
-      append_token();
-      ^
-../src/Compactor-Pascal.c:86:5: warning: implicit declaration of function ‘flush_output_record’ [-Wimplicit-function-declaration]
-     if(0 < record_length) flush_output_record();
-     ^
-../src/Compactor-Pascal.c: In function ‘append’:
-../src/Compactor-Pascal.c:127:3: warning: implicit declaration of function ‘strcat’ [-Wimplicit-function-declaration]
-   strcat(output_record, " ");
-   ^
-../src/Compactor-Pascal.c:127:3: warning: incompatible implicit declaration of built-in function ‘strcat’
-../src/Compactor-Pascal.c: At top level:
-../src/Compactor-Pascal.c:136:6: warning: conflicting types for ‘append_token’
- void append_token(void)
-      ^
-../src/Compactor-Pascal.c:77:6: note: previous implicit declaration of ‘append_token’ was here
-      append_token();
-      ^
-../src/Compactor-Pascal.c: In function ‘append_token’:
-../src/Compactor-Pascal.c:140:2: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
-  token_length = strlen(token_string);
-  ^
-../src/Compactor-Pascal.c:140:17: warning: incompatible implicit declaration of built-in function ‘strlen’
-  token_length = strlen(token_string);
-                 ^
-../src/Compactor-Pascal.c:145:2: warning: incompatible implicit declaration of built-in function ‘strcat’
-  strcat(output_record, token_string);
-  ^
-Finished building: ../src/Compactor-Pascal.c
- 
-Building target: Compactor-Pascal
-Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-makefile:30: recipe for target 'Compactor-Pascal' failed
-./src/Compactor-Pascal.o: In function `main':
-/home/morrisma/Development/CProjects/Asm/Compactor-Pascal/Debug/../src/Compactor-Pascal.c:75: undefined reference to `append_blank'
-/home/morrisma/Development/CProjects/Asm/Compactor-Pascal/Debug/../src/Compactor-Pascal.c:86: undefined reference to `flush_output_record'
-./src/Compactor-Pascal.o: In function `append':
-/home/morrisma/Development/CProjects/Asm/Compactor-Pascal/Debug/../src/Compactor-Pascal.c:125: undefined reference to `flush_output_record'
-./src/Compactor-Pascal.o: In function `append_token':
-/home/morrisma/Development/CProjects/Asm/Compactor-Pascal/Debug/../src/Compactor-Pascal.c:142: undefined reference to `flush_output_record'
-collect2: error: ld returned 1 exit status
-make: *** [Compactor-Pascal] Error 1
-07:20:08 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-Building file: ../src/Compactor-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
-../src/Compactor-Pascal.c: In function ‘append_blank’:
-../src/Compactor-Pascal.c:136:3: warning: implicit declaration of function ‘strcat’ [-Wimplicit-function-declaration]
-   strcat(output_record, " ");
-   ^
-../src/Compactor-Pascal.c:136:3: warning: incompatible implicit declaration of built-in function ‘strcat’
-../src/Compactor-Pascal.c: In function ‘append_token’:
-../src/Compactor-Pascal.c:149:2: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
-  token_length = strlen(token_string);
-  ^
-../src/Compactor-Pascal.c:149:17: warning: incompatible implicit declaration of built-in function ‘strlen’
-  token_length = strlen(token_string);
-                 ^
-../src/Compactor-Pascal.c:154:2: warning: incompatible implicit declaration of built-in function ‘strcat’
-  strcat(output_record, token_string);
-  ^
-Finished building: ../src/Compactor-Pascal.c
- 
-Building target: Compactor-Pascal
-Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-Finished building target: Compactor-Pascal
- 
-07:20:39 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-make: Nothing to be done for 'all'.
-07:22:22 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-Building file: ../src/Compactor-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
-Finished building: ../src/Compactor-Pascal.c
- 
-Building target: Compactor-Pascal
-Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-Finished building target: Compactor-Pascal
- 
-07:23:06 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-Building file: ../src/Compactor-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
-Finished building: ../src/Compactor-Pascal.c
- 
-Building target: Compactor-Pascal
-Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-Finished building target: Compactor-Pascal
- 
-07:24:32 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-make: Nothing to be done for 'all'.
-07:25:15 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-Building file: ../src/Compactor-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
-Finished building: ../src/Compactor-Pascal.c
- 
-Building target: Compactor-Pascal
-Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-Finished building target: Compactor-Pascal
- 
-07:27:08 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-make: Nothing to be done for 'all'.
-07:27:18 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-Building file: ../src/Compactor-Pascal.c
-Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
-Finished building: ../src/Compactor-Pascal.c
- 
-Building target: Compactor-Pascal
-Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-Finished building target: Compactor-Pascal
- 
-07:27:26 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-make: Nothing to be done for 'all'.
-07:34:07 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
-make all 
-make: Nothing to be done for 'all'.
-07:39:57 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+19:58:42 **** Build of configuration Debug for project XRef ****
 make all 
 Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
 Finished building: ../src/ScannerPascal.c
  
-Building target: Compactor-Pascal
-Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-Finished building target: Compactor-Pascal
+Building file: ../src/XRef.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/XRef.d" -MT"src/XRef.d" -o "src/XRef.o" "../src/XRef.c"
+Finished building: ../src/XRef.c
  
-07:40:27 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+Finished building: ../src/error.c
+ 
+Building file: ../src/symtab.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/symtab.d" -MT"src/symtab.d" -o "src/symtab.o" "../src/symtab.c"
+Finished building: ../src/symtab.c
+ 
+Building target: XRef
+Invoking: GCC C Linker
+gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: XRef
+ 
+19:59:09 **** Incremental Build of configuration Debug for project XRef ****
 make all 
 make: Nothing to be done for 'all'.
-07:40:50 **** Incremental Build of configuration Debug for project Compactor-Pascal ****
+20:16:10 **** Incremental Build of configuration Debug for project XRef ****
 make all 
-Building file: ../src/Compactor-Pascal.c
+Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
-Finished building: ../src/Compactor-Pascal.c
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
  
-Building target: Compactor-Pascal
+Building target: XRef
 Invoking: GCC C Linker
-gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
-Finished building target: Compactor-Pascal
+gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: XRef
+ 
+20:18:10 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+20:28:30 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building target: XRef
+Invoking: GCC C Linker
+gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: XRef
+ 
+20:31:15 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+20:37:58 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+20:40:50 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+20:44:51 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+21:23:38 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+21:25:01 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+21:32:38 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+21:34:14 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+21:36:35 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+21:38:36 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+Building file: ../src/XRef.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/XRef.d" -MT"src/XRef.d" -o "src/XRef.o" "../src/XRef.c"
+Finished building: ../src/XRef.c
+ 
+Building target: XRef
+Invoking: GCC C Linker
+gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: XRef
+ 
+21:38:59 **** Incremental Build of configuration Debug for project XRef ****
+make all 
+Building file: ../src/XRef.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/XRef.d" -MT"src/XRef.d" -o "src/XRef.o" "../src/XRef.c"
+Finished building: ../src/XRef.c
+ 
+Building target: XRef
+Invoking: GCC C Linker
+gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: XRef
  
