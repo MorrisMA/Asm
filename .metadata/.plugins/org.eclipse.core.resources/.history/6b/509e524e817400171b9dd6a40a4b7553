@@ -1,0 +1,84 @@
+/*
+ * symtab.h
+ *
+ *  Created on: Jul 28, 2017
+ *      Author: morrisma
+ */
+
+#ifndef SYMTAB_H_
+#define SYMTAB_H_
+
+#include "common.h"
+
+/*
+ * Value structure
+ */
+
+typedef union {
+	float real;
+	int   integer;
+	char  *stringp;
+} VALUE;
+
+/*
+ * Definition structure
+ */
+
+typedef enum {
+	UNDEFINED,
+	CONST_DEFN, TYPE_DEFN, VAR_DEFN, FIELD_DEFN,
+	VALPARAM_DEFN, VARPARAM_DEFN,
+	PROG_DEFN, PROC_DEFN, FUNC_DEFN,
+} DEFN_KEY;
+
+typedef enum {
+	DECLARED, FORWARD,
+	READ, READLN, WRITE, WRITELN,
+	ABS, ARCTAN, CHR, COS, EOFF, EOLN, EXP, LN, ODD, ORD,
+	PRED, ROUND, SIN, SQRT, SUCC, TRUNC,
+} ROUTINE_KEY;
+
+typedef struct {
+	DEFN_KEY key;
+	union {
+		struct {
+			VALUE value;
+		} constant;
+
+		struct {
+			ROUTINE_KEY        key;
+			int                parm_count;
+			int                total_parm_size;
+			int                total_local_size;
+			struct symtab_node *parms;
+			struct symtab_node *locals;
+			struct symtab_node *local_symtab;
+			char               *code_segment;
+		} routine;
+
+		struct {
+			int                offset;
+			struct symtab_node *record_idp;
+		} data;
+	} info;
+} DEFN_STRUCT;
+
+/*
+ * Symbol Table Node
+ */
+
+typedef struct symtab_node {
+	struct symtab_node *left, *right;   // pointers to left/right sub-trees
+	struct symtab_node *next;           // pointer to chain symbol tables
+
+	char        *name;          // symbol name
+	char        *info;          // Pointer to generic information record
+	DEFN_STRUCT defn;           // symbol definition data
+	int         level;          // symbol lexical level
+	int         label_index;    // global symbol index, symbol name a UID
+} SYMTAB_NODE, *SYMTAB_NODE_PTR;
+
+SYMTAB_NODE_PTR search_symtab(char *name, SYMTAB_NODE_PTR np);
+SYMTAB_NODE_PTR enter_symtab(char *name, SYMTAB_NODE_PTR *npp);
+
+#endif /* SYMTAB_H_ */

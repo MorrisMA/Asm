@@ -1,0 +1,181 @@
+/*
+ ============================================================================
+ Name        : Uncruncher.c
+ Author      : Michael A. Morris
+ Version     : 0.0.1
+ Copyright   : Copyright 2017, GPLv3
+ Description : Program Uncruncher in C, ANSI-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#include "common.h"
+#include "ScannerPascal.h"
+#include "symtab.h"
+
+#define MAX_OUTPUT_RECORD_LENGTH 80
+
+typedef enum {
+	DELIMITER, NONDELIMITER,
+} TOKEN_CLASS;
+
+/*
+ * Globals
+ */
+
+FILE *crunch_file;
+char token_string[MAX_TOKEN_STRING_LENGTH];
+char output_record[MAX_OUTPUT_RECORD_LENGTH];
+
+TOKEN_CODE ctoken;  // Token from crunched file
+
+int  record_length;
+char *recp;
+
+TOKEN_CLASS token_class(void);
+
+/*
+ * Function Prototypes
+ */
+
+void read_crunched_symtab(void);
+void get_ctoken(void);
+
+TOKEN_CLASS token_class(void);
+void append_blank(void);
+void append_token(void);
+void flush_output_record(void);
+
+
+int main(int argc, char *argv[])
+{
+    TOKEN_CLASS class, prev_class;
+
+	/*
+     * Initialize Scanner.
+     */
+
+	print_flag = FALSE;
+	init_scanner(argv[1]);
+
+	/*
+	 * Initialize Compactor Utility
+	 */
+
+	prev_class = DELIMITER;
+
+	recp  = output_record;
+	*recp = '\0';
+
+	record_length = 0;
+
+    /*
+     * Repeatedly get tokens until period or end of file.
+     */
+
+    do {
+    	get_token();
+    	if(END_OF_FILE == token) break;
+    	class = token_class();
+
+    	/*
+    	 * Append a blank only if two adjacent non-delimiter tokens found.
+    	 */
+
+    	if((NONDELIMITER == prev_class) && (NONDELIMITER == class)) {
+    		append_blank();
+    	}
+    	append_token();
+
+    	prev_class = class;
+    } while(PERIOD != token);
+
+    /*
+     * Flush last output record if it partially filled.
+     */
+
+    if(0 < record_length) flush_output_record();
+
+    quit_scanner();
+
+	return EXIT_SUCCESS;
+}
+
+
+
+/*
+ * TOKEN_CLASS token_class(void)    Convert tokens returned by scanner/tokenizer
+ */
+
+TOKEN_CLASS token_class(void)
+{
+	/*
+	 * Non-delimiters:  identifiers, numbers, and reserved words
+	 * delimiters:      strings and special symbols
+	 *
+	 *      NOTE:   the token tables are configured so that all special
+	 *              characters tokens precede all the reserved words.
+	 */
+
+	switch(ctoken){
+	case IDENTIFIER :
+	case NUMBER :
+		return (NONDELIMITER);
+
+	default :
+		return ((AND > token) ? DELIMITER : NONDELIMITER);
+	}
+}
+
+/*
+ * void append_blank(void)  Append a blank to the output record if
+ *                          there's room. Otherwise flush the output
+ *                          record, and drop the request.
+ */
+
+void append_blank(void)
+{
+	if((MAX_OUTPUT_RECORD_LENGTH - 1) == ++record_length) {
+		flush_output_record();
+	} else {
+		strcat(output_record, " ");
+	}
+}
+
+/* void append_token(void)  Append the token to the output record if it
+ *                          fits. If not, flush the current record, and
+ *                          the token string to the new output record.
+ */
+
+void append_token(void)
+{
+	int token_length;       // length of token string
+
+	token_length = strlen(token_string);
+	if((MAX_OUTPUT_RECORD_LENGTH - 1) <= (record_length + token_length)) {
+		flush_output_record();
+	}
+
+	strcat(output_record, token_string);
+	record_length += token_length;
+}
+
+/*
+ * void flush_output_record(void)	Flush the current output record and
+ *                                  reset the record_length.
+ */
+
+void flush_output_record(void)
+{
+	printf("%s\n", output_record);
+
+	recp  = output_record;
+	*recp = '\0';
+
+	record_length = 0;
+}
+

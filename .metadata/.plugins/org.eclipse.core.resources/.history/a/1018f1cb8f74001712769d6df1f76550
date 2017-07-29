@@ -1,0 +1,266 @@
+/*
+ ============================================================================
+ Name        : Uncruncher.c
+ Author      : Michael A. Morris
+ Version     : 0.0.1
+ Copyright   : Copyright 2017, GPLv3
+ Description : Program Uncruncher in C, ANSI-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#include "common.h"
+#include "ScannerPascal.h"
+
+#define MAX_OUTPUT_RECORD_LENGTH 80
+
+typedef enum {
+	DELIMITER, NONDELIMITER,
+} TOKEN_CLASS;
+
+/*
+ * Globals
+ */
+
+FILE *crunch_file;
+char token_string[MAX_TOKEN_STRING_LENGTH];
+char output_record[MAX_OUTPUT_RECORD_LENGTH];
+
+TOKEN_CODE ctoken;  // Token from crunched file
+
+int  record_length;
+char *recp;
+char **symtab_strings;
+
+TOKEN_CLASS token_class(void);
+
+/*
+ * Externals
+ */
+
+extern char *symbol_strings[];
+
+/*
+ * Function Prototypes
+ */
+
+void read_crunched_symtab(void);
+void get_ctoken(void);
+
+TOKEN_CLASS token_class(void);
+void append_blank(void);
+void append_token(void);
+void flush_output_record(void);
+
+
+int main(int argc, char *argv[])
+{
+    TOKEN_CLASS class, prev_class;
+
+    /*
+     * Open crunched source file
+     */
+
+    crunch_file = fopen(argv[1], "rb");
+    if(NULL == crunch_file) {
+    	printf("*** Error *** Unable to open source file.\n");
+    	exit(-2);
+    }
+
+	/*
+	 * Initialize Uncruncher Utility
+	 */
+
+	prev_class = DELIMITER;
+
+	recp  = output_record;
+	*recp = '\0';
+
+	record_length = 0;
+
+	/*
+	 * Read the crunched symbol table at start of source file
+	 */
+
+	read_crunched_symtab();
+
+    /*
+     * Repeatedly get crunched tokens until period or end of file.
+     */
+
+    do {
+    	get_ctoken();
+    	if(END_OF_FILE == ctoken) break;
+
+    	class = token_class();
+
+    	/*
+    	 * Append a blank only if two adjacent non-delimiter tokens found.
+    	 */
+
+    	if((NONDELIMITER == prev_class) && (NONDELIMITER == class)) {
+    		append_blank();
+    	}
+    	append_token();
+
+    	prev_class = class;
+    } while(PERIOD != ctoken);
+
+    /*
+     * Flush last output record if it partially filled.
+     */
+
+    if(0 < record_length) flush_output_record();
+
+    quit_scanner();
+
+	return EXIT_SUCCESS;
+}
+
+/*
+ * void read_crunched_symtab(void)      Read crunched symbol table and
+ *                                      build array of its name strings.
+ */
+
+void read_crunched_symtab(void)
+{
+	long count;
+	long index;
+	char length;
+
+	/*
+	 * Read the count of symbol table entries and allocate that many
+	 * entries for the symbol table name array
+	 */
+
+	fread(&count, sizeof(long), 1, crunch_file);
+	symtab_strings = (char **) alloc_bytes(count * sizeof(char *));
+
+	/*
+	 * Read each symbol table entry (array index, string length, and
+	 * string). Set the symbol table name array element.
+	 */
+
+	do {
+		fread(&index,  sizeof(long), 1, crunch_file);
+		fread(&length, sizeof(char), 1, crunch_file);
+
+		symtab_strings[index] = alloc_bytes(length);
+
+		fread(symtab_strings[index], length, 1, crunch_file);
+	} while (0 < --count);
+}
+
+/*
+ * void get_ctoken(void)    Read the next token from crunched source file.
+ *                          Uncrunch the token into the token_string with
+ *                          a lookup in the symbol table name strings array
+ *                          or in the symbol strings array.
+ */
+
+void get_ctoken(void)
+{
+	/*
+	 * Read crunched token code from source file.
+	 */
+
+	fread(&ctoken, sizeof(char), 1, crunch_file);
+
+	/*
+	 * Identifier, number, and string tokens: look up in the symbol table
+	 * name strings array. All other tokens, look up in the symbol strings
+	 * array.
+	 */
+
+	switch(ctoken) {
+	case IDENTIFIER :
+	case NUMBER     :
+	case STRING     :
+	    {
+	    	long index;
+			fread(&index, sizeof(long), 1, crunch_file);
+			strcpy(token_string, symtab_strings[index]);
+	    }
+	    break;
+
+	default :
+		strcpy(token_string, symbol_strings[ctoken]);
+	}
+}
+
+/*
+ * TOKEN_CLASS token_class(void)    Convert tokens returned by scanner/tokenizer
+ */
+
+TOKEN_CLASS token_class(void)
+{
+	/*
+	 * Non-delimiters:  identifiers, numbers, and reserved words
+	 * delimiters:      strings and special symbols
+	 *
+	 *      NOTE:   the token tables are configured so that all special
+	 *              characters tokens precede all the reserved words.
+	 */
+
+	switch(ctoken){
+	case IDENTIFIER :
+	case NUMBER :
+		return (NONDELIMITER);
+
+	default :
+		return ((AND > ctoken) ? DELIMITER : NONDELIMITER);
+	}
+}
+
+/*
+ * void append_blank(void)  Append a blank to the output record if
+ *                          there's room. Otherwise flush the output
+ *                          record, and drop the request.
+ */
+
+void append_blank(void)
+{
+	if((MAX_OUTPUT_RECORD_LENGTH - 1) == ++record_length) {
+		flush_output_record();
+	} else {
+		strcat(output_record, " ");
+	}
+}
+
+/* void append_token(void)  Append the token to the output record if it
+ *                          fits. If not, flush the current record, and
+ *                          the token string to the new output record.
+ */
+
+void append_token(void)
+{
+	int token_length;       // length of token string
+
+	token_length = strlen(token_string);
+	if((MAX_OUTPUT_RECORD_LENGTH - 1) <= (record_length + token_length)) {
+		flush_output_record();
+	}
+
+	strcat(output_record, token_string);
+	record_length += token_length;
+}
+
+/*
+ * void flush_output_record(void)	Flush the current output record and
+ *                                  reset the record_length.
+ */
+
+void flush_output_record(void)
+{
+	printf("%s\n", output_record);
+
+	recp  = output_record;
+	*recp = '\0';
+
+	record_length = 0;
+}
+

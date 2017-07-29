@@ -1,0 +1,134 @@
+/*
+ ============================================================================
+ Name        : Cruncher.c
+ Author      : Michael A. Morris
+ Version     : 0.0.1
+ Copyright   : Copyright 2017, GPLv3
+ Description : Program Cruncher in C, ANSI-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+#include "common.h"
+#include "ScannerPascal.h"
+#include "symtab.h"
+
+/*
+ * Externals
+ */
+
+extern TOKEN_CODE token;
+extern char       token_string[];
+extern char       word_string[];
+extern BOOLEAN    print_flag;
+
+extern SYMTAB_NODE_PTR symtab_root;
+
+/*
+ * Globals
+ */
+
+int index = 0;
+
+FILE *crunch_file;
+
+/*
+ * Function prototypes
+ */
+
+void do_pass_1(void);
+void do_pass_2(void);
+void output_crunched_symtab(SYMTAB_NODE_PTR np);
+void output_crunched_token(void);
+
+
+int main(int argc, char *argv[])
+{
+	/*
+	 * Initialize Scanner
+	 *      turn off print flag first to prevent first line from being
+	 *      output.
+	 */
+
+	print_flag = FALSE;
+	init_scanner(argv[1]);
+
+	/*
+	 * Pass 1 - Read input file, create symbol table. Include numbers
+	 *          and strings in the symbol table. Add unique index to each
+	 *          node as the nodes are added. Provides UID for identifiers.
+	 */
+
+	do_pass_1();
+	close_source_file();
+
+	/*
+	 * Open the output, crunch file, and output the crunched symbol table.
+	 */
+
+	crunch_file = fopen(argv[2], "wb");
+	if(NULL == crunch_file) {
+		fprintf(stderr, "*** ERROR *** Failed to open crunch file.\n");
+		exit(-2);
+	}
+	fwrite(&index, sizeof(int), 1, crunch_file);    // number of entries
+	output_crunched_symtab(symtab_root);    // output symtab alphabetically
+
+	/*
+	 * Pass 2 -
+	 */
+
+	open_source_file(argv[1]);
+	do_pass_2();
+
+	fclose(crunch_file);
+	quit_scanner();
+
+	return EXIT_SUCCESS;
+}
+
+/*
+ * void do_pass_1(void)     Read source file and build symbol table.
+ */
+
+void do_pass_1(void)
+{
+	SYMTAB_NODE_PTR np;
+
+	/*
+	 * Process source file tokens until a period or EOF found.
+	 */
+
+	do {
+		get_token();
+		if(END_OF_FILE == token) break;
+
+		/*
+		 * Enter each identifier, number, or string into the symbol table.
+		 */
+
+		switch(token) {
+		case IDENTIFIER :
+			if(NULL == (np = search_symtab(word_string, symtab_root))) {
+				np = enter_symtab(word_string, &symtab_root);
+				np->info = (char *) index++;
+			}
+			break;
+
+		case NUMBER :
+		case STRING :
+			if(NULL == (np = search_symtab(token_string, symtab_root))) {
+				np = enter_symtab(token_string, &symtab_root);
+				np->info = (char *) index++;
+			}
+			break;
+
+		default :
+			break;
+		}
+	} while(PERIOD != token);
+}

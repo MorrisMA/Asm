@@ -1,4 +1,147 @@
-19:58:42 **** Build of configuration Debug for project XRef ****
+14:01:48 **** Build of configuration Debug for project Cruncher ****
+make all 
+Building file: ../src/Cruncher.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Cruncher.d" -MT"src/Cruncher.d" -o "src/Cruncher.o" "../src/Cruncher.c"
+Finished building: ../src/Cruncher.c
+ 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+Finished building: ../src/error.c
+ 
+Building file: ../src/symtab.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/symtab.d" -MT"src/symtab.d" -o "src/symtab.o" "../src/symtab.c"
+Finished building: ../src/symtab.c
+ 
+Building target: Cruncher
+Invoking: GCC C Linker
+gcc  -o "Cruncher"  ./src/Cruncher.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Cruncher
+ 
+14:05:16 **** Incremental Build of configuration Debug for project Uncruncher ****
+make all 
+Building file: ../src/Uncruncher.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Uncruncher.d" -MT"src/Uncruncher.d" -o "src/Uncruncher.o" "../src/Uncruncher.c"
+Finished building: ../src/Uncruncher.c
+ 
+Building target: Uncruncher
+Invoking: GCC C Linker
+gcc  -o "Uncruncher"  ./src/ScannerPascal.o ./src/Uncruncher.o ./src/error.o   -lm
+Finished building target: Uncruncher
+ 
+14:05:41 **** Incremental Build of configuration Debug for project Uncruncher ****
+make all 
+make: Nothing to be done for 'all'.
+14:07:50 **** Incremental Build of configuration Debug for project Uncruncher ****
+make all 
+Building file: ../src/Uncruncher.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Uncruncher.d" -MT"src/Uncruncher.d" -o "src/Uncruncher.o" "../src/Uncruncher.c"
+Finished building: ../src/Uncruncher.c
+ 
+Building target: Uncruncher
+Invoking: GCC C Linker
+gcc  -o "Uncruncher"  ./src/ScannerPascal.o ./src/Uncruncher.o ./src/error.o   -lm
+Finished building target: Uncruncher
+ 
+14:07:57 **** Incremental Build of configuration Debug for project Uncruncher ****
+make all 
+make: Nothing to be done for 'all'.
+14:09:03 **** Incremental Build of configuration Debug for project Uncruncher ****
+make all 
+make: Nothing to be done for 'all'.
+14:09:20 **** Build of configuration Release for project Compactor-Pascal ****
+make all 
+Building file: ../src/Compactor-Pascal.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Compactor-Pascal.d" -MT"src/Compactor-Pascal.d" -o "src/Compactor-Pascal.o" "../src/Compactor-Pascal.c"
+Finished building: ../src/Compactor-Pascal.c
+ 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+Finished building: ../src/error.c
+ 
+Building target: Compactor-Pascal
+Invoking: GCC C Linker
+gcc  -o "Compactor-Pascal"  ./src/Compactor-Pascal.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Compactor-Pascal
+ 
+14:09:22 **** Incremental Build of configuration Debug for project Cruncher ****
+make all 
+make: Nothing to be done for 'all'.
+14:09:23 **** Build of configuration Debug for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   -lm
+Finished building target: Lister
+ 
+14:09:24 **** Build of configuration Debug for project Token-Pascal ****
+make all 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/Token-Pascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
+Finished building: ../src/Token-Pascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+Finished building: ../src/error.c
+ 
+Building target: Token-Pascal
+Invoking: GCC C Linker
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
+Finished building target: Token-Pascal
+ 
+14:09:26 **** Build of configuration Debug for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+14:09:27 **** Incremental Build of configuration Release for project Uncruncher ****
+make all 
+Building file: ../src/Uncruncher.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Uncruncher.d" -MT"src/Uncruncher.d" -o "src/Uncruncher.o" "../src/Uncruncher.c"
+Finished building: ../src/Uncruncher.c
+ 
+Building target: Uncruncher
+Invoking: GCC C Linker
+gcc  -o "Uncruncher"  ./src/ScannerPascal.o ./src/Uncruncher.o ./src/error.o   -lm
+Finished building target: Uncruncher
+ 
+14:09:29 **** Build of configuration Debug for project XRef ****
 make all 
 Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
@@ -25,84 +168,137 @@ Invoking: GCC C Linker
 gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
 Finished building target: XRef
  
-19:59:09 **** Incremental Build of configuration Debug for project XRef ****
+14:10:31 **** Incremental Build of configuration Release for project Compactor-Pascal ****
 make all 
 make: Nothing to be done for 'all'.
-20:16:10 **** Incremental Build of configuration Debug for project XRef ****
+14:10:31 **** Incremental Build of configuration Release for project Cruncher ****
+make all 
+Building file: ../src/Cruncher.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Cruncher.d" -MT"src/Cruncher.d" -o "src/Cruncher.o" "../src/Cruncher.c"
+Finished building: ../src/Cruncher.c
+ 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+Finished building: ../src/error.c
+ 
+Building file: ../src/symtab.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/symtab.d" -MT"src/symtab.d" -o "src/symtab.o" "../src/symtab.c"
+Finished building: ../src/symtab.c
+ 
+Building target: Cruncher
+Invoking: GCC C Linker
+gcc  -o "Cruncher"  ./src/Cruncher.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Cruncher
+ 
+14:10:34 **** Incremental Build of configuration Release for project Lister ****
+make all 
+Building file: ../src/Lister.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Lister.d" -MT"src/Lister.d" -o "src/Lister.o" "../src/Lister.c"
+Finished building: ../src/Lister.c
+ 
+Building target: Lister
+Invoking: GCC C Linker
+gcc  -o "Lister"  ./src/Lister.o   
+Finished building target: Lister
+ 
+14:10:35 **** Incremental Build of configuration Release for project Token-Pascal ****
 make all 
 Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
 Finished building: ../src/ScannerPascal.c
  
-Building target: XRef
-Invoking: GCC C Linker
-gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
-Finished building target: XRef
+Building file: ../src/Token-Pascal.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Token-Pascal.d" -MT"src/Token-Pascal.d" -o "src/Token-Pascal.o" "../src/Token-Pascal.c"
+Finished building: ../src/Token-Pascal.c
  
-20:18:10 **** Incremental Build of configuration Debug for project XRef ****
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+Finished building: ../src/error.c
+ 
+Building target: Token-Pascal
+Invoking: GCC C Linker
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   
+./src/ScannerPascal.o: In function `get_number':
+ScannerPascal.c:(.text+0x1171): undefined reference to `pow'
+makefile:30: recipe for target 'Token-Pascal' failed
+collect2: error: ld returned 1 exit status
+make: *** [Token-Pascal] Error 1
+14:10:37 **** Incremental Build of configuration Release for project Tokenizer ****
+make all 
+Building file: ../src/Tokenizer.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Tokenizer.d" -MT"src/Tokenizer.d" -o "src/Tokenizer.o" "../src/Tokenizer.c"
+Finished building: ../src/Tokenizer.c
+ 
+Building target: Tokenizer
+Invoking: GCC C Linker
+gcc  -o "Tokenizer"  ./src/Tokenizer.o   
+Finished building target: Tokenizer
+ 
+14:10:39 **** Incremental Build of configuration Release for project Uncruncher ****
 make all 
 make: Nothing to be done for 'all'.
-20:28:30 **** Incremental Build of configuration Debug for project XRef ****
+14:10:40 **** Incremental Build of configuration Release for project XRef ****
 make all 
 Building file: ../src/ScannerPascal.c
 Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
 Finished building: ../src/ScannerPascal.c
  
-Building target: XRef
-Invoking: GCC C Linker
-gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
-Finished building target: XRef
- 
-20:31:15 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-20:37:58 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-20:40:50 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-20:44:51 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-21:23:38 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-21:25:01 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-21:32:38 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-21:34:14 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-21:36:35 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-make: Nothing to be done for 'all'.
-21:38:36 **** Incremental Build of configuration Debug for project XRef ****
-make all 
 Building file: ../src/XRef.c
 Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/XRef.d" -MT"src/XRef.d" -o "src/XRef.o" "../src/XRef.c"
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/XRef.d" -MT"src/XRef.d" -o "src/XRef.o" "../src/XRef.c"
 Finished building: ../src/XRef.c
  
-Building target: XRef
-Invoking: GCC C Linker
-gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
-Finished building target: XRef
- 
-21:38:59 **** Incremental Build of configuration Debug for project XRef ****
-make all 
-Building file: ../src/XRef.c
+Building file: ../src/error.c
 Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/XRef.d" -MT"src/XRef.d" -o "src/XRef.o" "../src/XRef.c"
-Finished building: ../src/XRef.c
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+Finished building: ../src/error.c
+ 
+Building file: ../src/symtab.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/symtab.d" -MT"src/symtab.d" -o "src/symtab.o" "../src/symtab.c"
+Finished building: ../src/symtab.c
  
 Building target: XRef
 Invoking: GCC C Linker
 gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
 Finished building target: XRef
  
+14:11:22 **** Incremental Build of configuration Release for project Compactor-Pascal ****
+make all 
+make: Nothing to be done for 'all'.
+14:11:23 **** Incremental Build of configuration Release for project Cruncher ****
+make all 
+make: Nothing to be done for 'all'.
+14:11:24 **** Incremental Build of configuration Release for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+14:11:24 **** Incremental Build of configuration Release for project Token-Pascal ****
+make all 
+Building target: Token-Pascal
+Invoking: GCC C Linker
+gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
+Finished building target: Token-Pascal
+ 
+14:11:25 **** Incremental Build of configuration Release for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+14:11:26 **** Incremental Build of configuration Release for project Uncruncher ****
+make all 
+make: Nothing to be done for 'all'.
+14:11:27 **** Incremental Build of configuration Release for project XRef ****
+make all 
+make: Nothing to be done for 'all'.

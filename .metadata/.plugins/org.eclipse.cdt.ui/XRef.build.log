@@ -1,15 +1,6 @@
-21:38:59 **** Incremental Build of configuration Debug for project XRef ****
+14:11:27 **** Incremental Build of configuration Release for project XRef ****
 make all 
-Building file: ../src/XRef.c
-Invoking: GCC C Compiler
-gcc -std=c99 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/XRef.d" -MT"src/XRef.d" -o "src/XRef.o" "../src/XRef.c"
-Finished building: ../src/XRef.c
- 
-Building target: XRef
-Invoking: GCC C Linker
-gcc  -o "XRef"  ./src/ScannerPascal.o ./src/XRef.o ./src/error.o ./src/symtab.o   -lm
-Finished building target: XRef
- 
+make: Nothing to be done for 'all'.
 
-21:39:00 Build Finished (took 728ms)
+14:11:27 Build Finished (took 178ms)
 

@@ -1,6 +1,6 @@
-17:13:16 **** Incremental Build of configuration Debug for project Lister ****
+14:11:24 **** Incremental Build of configuration Release for project Lister ****
 make all 
 make: Nothing to be done for 'all'.
 
-17:13:16 Build Finished (took 105ms)
+14:11:24 Build Finished (took 137ms)
 
