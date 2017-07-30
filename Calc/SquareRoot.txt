@@ -1,3 +1,5 @@
+{Compute the Square Root of Value using Newton's Method}
+
 value := 4096;
 root  := 1;
 

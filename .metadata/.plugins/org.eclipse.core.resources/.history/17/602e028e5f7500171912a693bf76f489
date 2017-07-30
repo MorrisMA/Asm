@@ -790,7 +790,7 @@ void skip_comment(void)
 {
 	do {
 		get_char();
-	} while(('}' != ch) && (EOF_CHAR != ch));
+	} while(('}' != ch) || (EOF_CHAR != ch));
 }
 
 /*
