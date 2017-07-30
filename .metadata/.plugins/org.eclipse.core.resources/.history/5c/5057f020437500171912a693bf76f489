@@ -1,0 +1,482 @@
+/*
+ ============================================================================
+ Name        : Calc.c
+ Author      : Michael A. Morris
+ Version     : 0.0.1
+ Copyright   : Copyright 2017, GPLv3
+ Description : Calculator in C, ANSI-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#include "common.h"
+#include "error.h"
+#include "ScannerPascal.h"
+#include "symtab.h"
+
+#define STACK_SIZE 32
+
+#define POS_INFINITY ((float) 0x7F800000)
+#define NEG_INFINITY ((float) 0xFF800000)
+
+/*
+ * Externals
+ */
+
+extern TOKEN_CODE token;
+extern char       token_string[];
+extern char       word_string[];
+extern LITERAL    literal;
+
+/*
+ * Function prototypes
+ */
+
+void assignment_statement(void);
+
+void expression(void);
+void simple_expression(void);
+void term(void);
+void factor(void);
+
+/*
+ * Globals  -   Implement a floating point evaluation stack and provide
+ *              two functions for accessing the stack for postfix
+ *              calculations:
+ *
+ *                  void push(float) - a function
+ *                  float pop()      - a macro
+ */
+
+float stack[STACK_SIZE];
+float *tos = stack;
+
+void push(float);           // Pushes value onto the stack
+#define pop()   *tos--      // Returns value popped off the stack
+
+
+int main(int argc, char *argv[])
+{
+	/*
+	 * Initialize Scanner
+	 */
+
+	init_scanner(argv[1]);
+
+	/*
+	 * Process file using function assignment_statement() until
+	 * a PERIOD or the end of file is found.
+	 */
+
+	get_token();    // always read ahead one character/token
+	do {
+		if(IDENTIFIER == token) assignment_statement();
+
+		/*
+		 * After an expression, there should be a semicolon, a period, or
+		 * an EOF. If not, skip tokens until there is such a token.
+		 */
+
+		while(   (SEMICOLON != token)
+			  && (PERIOD != token)
+			  && (END_OF_FILE != token) ) {
+			error(INVALID_EXPRESSION);
+			get_token();
+		}
+
+		/*
+		 * Re-synchronize by skipping trailing semicolons.
+		 */
+
+		while(SEMICOLON == token) get_token();
+
+	} while((PERIOD != token) && (END_OF_FILE != token));
+
+	return EXIT_SUCCESS;
+}
+
+/*
+ * void assignment_statement(void)  Process an assignment statement
+ *
+ *  Syntax diagram for an assignment statement:
+ *
+ *      identifier := expression
+ */
+
+void assignment_statement(void)
+{
+	SYMTAB_NODE_PTR np;
+	float           *vp;            // pointer to value
+	BOOLEAN         output_flag;    // TRUE if value assigned to "output"
+
+	/*
+	 * Look for an identifier
+	 */
+
+	if(IDENTIFIER != token) {
+		error(MISSING_IDENTIFIER);
+		return;
+	}
+
+	/*
+	 * Put IDENTIFIER into the symbol table unless it is "output"
+	 */
+
+	output_flag = (0 == strcmp(word_string, "output"));
+	if(!output_flag) {
+		if(NULL == (np = search_symtab(word_string, symtab_root))) {
+			np = enter_symtab(word_string, &symtab_root);
+			np->defn.key = VAR_DEFN;
+		}
+	}
+
+	/*
+	 * Found IDENTIFIER, now look for the assignment token: COLONEQUAL
+	 */
+
+	get_token();
+	if(COLONEQUAL != token) {
+		error(MISSING_COLONEQUAL);
+		return;
+	}
+
+	/*
+	 * Got IDENTIFIER COLONEQUAL, now process an expression
+	 */
+
+	get_token(); expression();
+
+	/*
+	 * Assign the value of the expression to the IDENTIFIER. If IDENTIFIER
+	 * is "output", print the value instead.
+	 */
+
+	if(output_flag) {
+		printf(">> output: %0.6g\n", pop());
+	} else {
+		vp  = alloc_struct(float);  // allocate memory for the value
+		*vp = pop();                // store value in the allocated memory
+		np->info = (char *) vp;     // point symbol table to the value
+	}
+}
+
+/*
+ * void expression(void)    Process an expression, which is just a simple
+ *                          expression at this time.
+ *
+ *  Syntax diagram for an expression:
+ *
+ *      [simple expression] | {{=, <, <=, <>, >=, >} [simple expression]}
+ */
+
+void expression(void)
+{
+	TOKEN_CODE op;
+	float      operand_1, operand_2;
+
+	simple_expression();
+
+	/*
+	 * Simple expression may be followed by relational operators and
+	 * another simple expression. If token is a relational operator,
+	 * save the operator and recursively process the next simple
+	 * expression.
+	 */
+
+	if(    (EQUAL == token)
+		|| (LT    == token)
+		|| (LE    == token)
+		|| (NE    == token)
+		|| (GE    == token)
+		|| (GT    == token) ) {
+		op = token;
+
+		get_token(); simple_expression();   // second simple expression
+	}
+
+	/*
+	 * Pop operand values from the evaluation stack
+	 */
+
+	operand_2 = pop(); operand_1 = pop();
+
+	/*
+	 * Perform the relational operation. Leave the result on the stack.
+	 */
+
+	switch(op) {
+	case EQUAL :
+		push((operand_1 == operand_2) ? 1.0 : 0.0);
+		break;
+
+	case LT :
+		push((operand_1 <  operand_2) ? 1.0 : 0.0);
+		break;
+
+	case LE :
+		push((operand_1 <= operand_2) ? 1.0 : 0.0);
+		break;
+
+	case NE :
+		push((operand_1 != operand_2) ? 1.0 : 0.0);
+		break;
+
+	case GE :
+		push((operand_1 >= operand_2) ? 1.0 : 0.0);
+		break;
+
+	case GT :
+		push((operand_1 >  operand_2) ? 1.0 : 0.0);
+		break;
+
+	default :
+		error(INVALID_STATEMENT);
+		break;
+	}
+}
+
+/*
+ * void simple_expression(void)     Process a simple expression consisting of
+ *                                  terms separated by operators: {+, -, OR}.
+ *                                  A unary {+, -} may precede first term.
+ *
+ *  Syntax diagram for a simple expression:
+ *
+ *      {{+, -} | term} | {{+, -, OR} term}
+ */
+
+void simple_expression(void)
+{
+	TOKEN_CODE op;
+	TOKEN_CODE unary_op = PLUS;
+	float      operand_1, operand_2;
+
+	/*
+	 * If there is a unary {+, -}, remember it.
+	 */
+
+	if((PLUS == token) || (MINUS == token)) {
+		unary_op = token;
+
+		get_token();
+	}
+
+	term();     // simple expressions start with a term.
+
+	/*
+	 * If there was a unary - before the first term,
+	 * negate the top of stack
+	 */
+
+	if(MINUS == unary_op) *tos = -(*tos);
+
+	/*
+	 * Loop to process subsequent terms separated by operators.
+	 */
+
+	while((PLUS == token) || (MINUS == token) || (OR == token)) {
+		op = token;     // remember the operator
+
+		get_token(); term();
+
+		/*
+		 * Pop the operand values ...
+		 */
+
+		operand_2 = pop(); operand_1 = pop();
+
+		/*
+		 * Perform the operation, and leave the result on the stack
+		 */
+
+		switch(op) {
+		case PLUS :
+			push(operand_1 + operand_2);
+			break;
+
+		case MINUS :
+			push(operand_1 - operand_2);
+			break;
+
+		case OR :
+			push(((operand_1 != 0.0) || (operand_2 != 0.0)) ? 1.0 : 0.0);
+			break;
+
+		default :
+			error(INVALID_EXPRESSION);
+			break;
+		}
+	}
+}
+
+/*
+ * void term(void)      Process a term consisting of factors separated by
+ *                      an operator: {*, /, DIV, MOD, AND}.
+ *
+ *  Syntax diagram for a term:
+ *
+ *      factor | {{*, /, DIV, MOD, AND} factor}
+ */
+
+void term(void)
+{
+	TOKEN_CODE op;
+	float      operand_1, operand_2;
+
+	factor();
+
+	/*
+	 * Loop to process subsequent factors separated by operators.
+	 */
+
+	while(    (STAR  == token)
+		   || (SLASH == token)
+		   || (DIV   == token)
+		   || (MOD   == token)
+		   || (AND   == token) ) {
+		op = token;     // remember the operator
+
+		get_token(); factor();
+
+		/*
+		 * Pop the operand values off the stack
+		 */
+
+		operand_2 = pop(); operand_1 = pop();
+
+		/*
+		 * Perform the operation. Leave the result on the stack.
+		 * Push 0.0 instead of dividing by zero.
+		 */
+
+		switch(op) {
+		case STAR :
+			push(operand_1 * operand_2);
+			break;
+
+		case SLASH :
+			if(0.0 != operand_2) {
+				push(operand_1 / operand_2);
+			} else {
+				printf("*** Warning - Division by 0.0");
+				if(0.0 <= operand_1) {
+					push(POS_INFINITY);
+				} else {
+					push(NEG_INFINITY);
+				}
+			}
+			break;
+
+		case DIV :
+			if(0.0 != operand_2) {
+				push((float) (((int) operand_1) / ((int) operand_2)));
+			} else {
+				printf("*** Warning - Division by 0");
+				if(0.0 <= operand_1) {
+					push(POS_INFINITY);
+				} else {
+					push(NEG_INFINITY);
+				}
+			}
+			break;
+
+		case MOD :
+			if(0.0 != operand_2) {
+				push((float) (((int) operand_1) % ((int) operand_2)));
+			} else {
+				printf("*** Warning - Division by 0");
+				if(0.0 <= operand_1) {
+					push(POS_INFINITY);
+				} else {
+					push(NEG_INFINITY);
+				}
+			}
+			break;
+
+		case AND :
+			push(((0.0 != operand_1) && (0.0 != operand_2)) ? 1.0 : 0.0);
+			break;
+
+		default :
+			error(INVALID_EXPRESSION);
+			break;
+		}
+	}
+}
+
+/*
+ * void factor(void)    Process a factor, which is an identifier, a number,
+ *                      or another expression inside of parenthesis.
+ *
+ *  Syntax diagram for a factor:
+ *
+ *     {identifier, number, {NOT factor}, {( [expression] )}}
+ */
+
+void factor(void)
+{
+	SYMTAB_NODE_PTR np;
+	BOOLEAN         float_literal;
+
+	switch(token) {
+	case IDENTIFIER :
+		/*
+		 * Push the IDENTIFIER's value, or 0.0 if undefined.
+		 */
+		np = search_symtab(word_string, symtab_root);
+		if(NULL != np) {
+			push(*((float *) np->info));
+		} else {
+			error(UNDEFINED_IDENTIFIER);
+			push(0.0);
+		}
+
+		get_token;
+		break;
+
+	case NUMBER :
+		float_literal = ((REAL_LIT == literal.type) ? TRUE : FALSE);
+		push((float_literal) ? literal.value.real
+				             : (float) literal.value.integer);
+
+		get_token();
+		break;
+
+	case NOT :
+		get_token(); factor();
+		*tos = ((0.0 == *tos) ? 1.0 : 0.0);
+		break;
+
+	case LPAREN :
+		get_token(); expression();
+
+		if(RPAREN == token) {
+			get_token();
+		} else {
+			error(MISSING_RPAREN);
+		}
+		break;
+
+	default :
+		error(INVALID_EXPRESSION);
+		break;
+	}
+}
+
+/*
+ * void push(float)     Push a value onto the evaluation stack
+ */
+
+void push(float value)
+{
+	if(tos >= &stack[STACK_SIZE]) {
+		error(STACK_OVERFLOW);
+		return;
+	}
+
+	*(++tos) = value;
+}

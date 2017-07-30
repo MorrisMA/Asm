@@ -1,0 +1,44 @@
+/*
+ * common.h
+ *
+ *  Created on : Jul 23, 2017
+ *  Author     : Michael A. Morris
+ *  Description: Provides the common functions to support
+ *               scanning and tokenizing.
+ *  Copyright  : Copyright 2017, GPLv3
+ */
+
+#ifndef COMMON_H_
+#define COMMON_H_
+
+#define	FORM_FEED_CHAR	'\f'
+
+#define	MAX_FILENAME_LENGTH      32
+#define	MAX_SOURCE_LINE_LENGTH	 256
+#define	MAX_PRINT_LINE_LENGTH    80
+#define MAX_BACK_TRACK_LENGTH    26
+#define MAX_LINES_PER_PAGE       50
+#define	DATE_STRING_LENGTH       26
+#define MAX_TOKEN_STRING_LENGTH  MAX_SOURCE_LINE_LENGTH
+#define MAX_CODE_BUFFER_SIZE     4096
+#define MAX_NESTING_LEVEL        16
+
+#define NUM_BITS_INT			 16
+#define MAX_POSITIVE_INTEGER     ( ((unsigned) (1 << (NUM_BITS_INT - 1))) - 1)
+#define MIN_NEGATIVE_INTEGER     (-(1 << (NUM_BITS_INT - 1)))
+#define MAX_INTEGER              MAX_POSITIVE_INTEGER
+#define MAX_DIGIT_COUNT          20
+
+typedef enum {
+	FALSE, TRUE,
+} BOOLEAN;
+
+/*
+ * Macros for memory allocation
+ */
+
+#define	alloc_struct(type)          ((type *) malloc(sizeof(type)))
+#define alloc_array(type, count)    ((type *) malloc(count * sizeof(type)))
+#define alloc_bytes(length)         ((char *) malloc(length))
+
+#endif /* COMMON_H_ */

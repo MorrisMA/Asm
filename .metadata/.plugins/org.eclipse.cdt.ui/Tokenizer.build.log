@@ -1,6 +1,6 @@
-14:11:25 **** Incremental Build of configuration Release for project Tokenizer ****
+12:12:11 **** Incremental Build of configuration Release for project Tokenizer ****
 make all 
 make: Nothing to be done for 'all'.
 
-14:11:25 Build Finished (took 86ms)
+12:12:11 Build Finished (took 98ms)
 

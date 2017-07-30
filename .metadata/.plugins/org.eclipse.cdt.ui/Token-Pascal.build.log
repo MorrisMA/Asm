@@ -1,10 +1,6 @@
-14:11:24 **** Incremental Build of configuration Release for project Token-Pascal ****
+12:12:10 **** Incremental Build of configuration Release for project Token-Pascal ****
 make all 
-Building target: Token-Pascal
-Invoking: GCC C Linker
-gcc  -o "Token-Pascal"  ./src/ScannerPascal.o ./src/Token-Pascal.o ./src/error.o   -lm
-Finished building target: Token-Pascal
- 
+make: Nothing to be done for 'all'.
 
-14:11:25 Build Finished (took 228ms)
+12:12:10 Build Finished (took 102ms)
 

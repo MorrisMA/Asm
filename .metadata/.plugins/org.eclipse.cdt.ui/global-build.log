@@ -302,3 +302,628 @@ make: Nothing to be done for 'all'.
 14:11:27 **** Incremental Build of configuration Release for project XRef ****
 make all 
 make: Nothing to be done for 'all'.
+21:59:04 **** Build of configuration Debug for project Infix2Postfix_Converter ****
+make all 
+Building file: ../src/Infix2Postfix_Converter.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Infix2Postfix_Converter.d" -MT"src/Infix2Postfix_Converter.d" -o "src/Infix2Postfix_Converter.o" "../src/Infix2Postfix_Converter.c"
+../src/Infix2Postfix_Converter.c: In function ‘simple_expression’:
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘NO_TOKEN’ not handled in switch [-Wswitch]
+   switch(op) {
+   ^
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘IDENTIFIER’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘NUMBER’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘STRING’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘UPARROW’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘STAR’ not handled in switch [-Wswitch]
+Finished building: ../src/Infix2Postfix_Converter.c
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘LPAREN’ not handled in switch [-Wswitch]
+ 
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘RPAREN’ not handled in switch [-Wswitch]
+Building file: ../src/ScannerPascal.c
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘EQUAL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘LBRACKET’ not handled in switch [-Wswitch]
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘RBRACKET’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘COLON’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘SEMICOLON’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘LT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘GT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘COMMA’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘PERIOD’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘SLASH’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘COLONEQUAL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘LE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘GE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘NE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘DOTDOT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘END_OF_FILE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘ERROR’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘AND’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘ARRAY’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘BEGIN’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘CASE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘CONST’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘DIV’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘DO’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘DOWNTO’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘ELSE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘END’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘FFILE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘FOR’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘FUNCTION’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘GOTO’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘IF’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘IN’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘LABEL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘MOD’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘NIL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘NOT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘OF’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘OR’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘PACKED’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘PROCEDURE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘PROGRAM’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘RECORD’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘REPEAT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘SET’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘THEN’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘TO’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘TYPE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘UNTIL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘VAR’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘WHILE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:120:3: warning: enumeration value ‘WITH’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c: In function ‘term’:
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘NO_TOKEN’ not handled in switch [-Wswitch]
+   switch(op) {
+   ^
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘IDENTIFIER’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘NUMBER’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘STRING’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘UPARROW’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘LPAREN’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘RPAREN’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘MINUS’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘PLUS’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘EQUAL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘LBRACKET’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘RBRACKET’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘COLON’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘SEMICOLON’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘LT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘GT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘COMMA’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘PERIOD’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘COLONEQUAL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘LE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘GE’ not handled in switch [-Wswitch]
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘NE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘DOTDOT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘END_OF_FILE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘ERROR’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘AND’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘ARRAY’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘BEGIN’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘CASE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘CONST’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘DIV’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘DO’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘DOWNTO’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘ELSE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘END’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘FFILE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘FOR’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘FUNCTION’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘GOTO’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘IF’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘IN’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘LABEL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘MOD’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘NIL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘NOT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘OF’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘OR’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘PACKED’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘PROCEDURE’ not handled in switch [-Wswitch]
+Finished building: ../src/error.c
+ 
+Building target: Infix2Postfix_Converter
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘PROGRAM’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘RECORD’ not handled in switch [-Wswitch]
+Invoking: GCC C Linker
+gcc  -o "Infix2Postfix_Converter"  ./src/Infix2Postfix_Converter.o ./src/ScannerPascal.o ./src/error.o   -lm
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘REPEAT’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘SET’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘THEN’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘TO’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘TYPE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘UNTIL’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘VAR’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘WHILE’ not handled in switch [-Wswitch]
+../src/Infix2Postfix_Converter.c:158:3: warning: enumeration value ‘WITH’ not handled in switch [-Wswitch]
+Finished building target: Infix2Postfix_Converter
+ 
+22:01:05 **** Incremental Build of configuration Debug for project Infix2Postfix_Converter ****
+make all 
+Building file: ../src/Infix2Postfix_Converter.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Infix2Postfix_Converter.d" -MT"src/Infix2Postfix_Converter.d" -o "src/Infix2Postfix_Converter.o" "../src/Infix2Postfix_Converter.c"
+Finished building: ../src/Infix2Postfix_Converter.c
+ 
+Building target: Infix2Postfix_Converter
+Invoking: GCC C Linker
+gcc  -o "Infix2Postfix_Converter"  ./src/Infix2Postfix_Converter.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Infix2Postfix_Converter
+ 
+22:01:30 **** Incremental Build of configuration Debug for project Infix2Postfix_Converter ****
+make all 
+make: Nothing to be done for 'all'.
+11:27:24 **** Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+../src/Calc.c: In function ‘assignment_statement’:
+../src/Calc.c:130:47: error: ‘symtab_root’ undeclared (first use in this function)
+   if(NULL == (np = search_symtab(word_string, symtab_root))) {
+                                               ^
+../src/Calc.c:130:47: note: each undeclared identifier is reported only once for each function it appears in
+../src/Calc.c: In function ‘factor’:
+../src/Calc.c:429:35: error: ‘symtab_root’ undeclared (first use in this function)
+   np = search_symtab(word_string, symtab_root);
+                                   ^
+src/subdir.mk:27: recipe for target 'src/Calc.o' failed
+make: *** [src/Calc.o] Error 1
+11:28:32 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building file: ../src/ScannerPascal.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ScannerPascal.d" -MT"src/ScannerPascal.d" -o "src/ScannerPascal.o" "../src/ScannerPascal.c"
+Finished building: ../src/ScannerPascal.c
+ 
+Building file: ../src/error.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/error.d" -MT"src/error.d" -o "src/error.o" "../src/error.c"
+Finished building: ../src/error.c
+ 
+Building file: ../src/symtab.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/symtab.d" -MT"src/symtab.d" -o "src/symtab.o" "../src/symtab.c"
+Finished building: ../src/symtab.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   
+makefile:30: recipe for target 'Calc' failed
+./src/ScannerPascal.o: In function `get_number':
+/home/morrisma/Development/CProjects/Asm/Calc/Debug/../src/ScannerPascal.c:371: undefined reference to `pow'
+collect2: error: ld returned 1 exit status
+make: *** [Calc] Error 1
+11:29:15 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+11:29:21 **** Incremental Build of configuration Debug for project Infix2Postfix_Converter ****
+make all 
+Building file: ../src/Infix2Postfix_Converter.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Infix2Postfix_Converter.d" -MT"src/Infix2Postfix_Converter.d" -o "src/Infix2Postfix_Converter.o" "../src/Infix2Postfix_Converter.c"
+Finished building: ../src/Infix2Postfix_Converter.c
+ 
+Building target: Infix2Postfix_Converter
+Invoking: GCC C Linker
+gcc  -o "Infix2Postfix_Converter"  ./src/Infix2Postfix_Converter.o ./src/ScannerPascal.o ./src/error.o   -lm
+Finished building target: Infix2Postfix_Converter
+ 
+11:30:31 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:32:49 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:34:40 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:38:35 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:38:40 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:41:44 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:43:18 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:43:25 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:46:30 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:50:35 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+11:50:53 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+11:59:12 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+12:08:27 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+12:09:30 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+12:11:26 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:05 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:06 **** Incremental Build of configuration Release for project Compactor-Pascal ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:08 **** Incremental Build of configuration Release for project Cruncher ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:08 **** Incremental Build of configuration Debug for project Infix2Postfix_Converter ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:09 **** Incremental Build of configuration Release for project Lister ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:10 **** Incremental Build of configuration Release for project Token-Pascal ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:11 **** Incremental Build of configuration Release for project Tokenizer ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:11 **** Incremental Build of configuration Release for project Uncruncher ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:12 **** Incremental Build of configuration Release for project XRef ****
+make all 
+make: Nothing to be done for 'all'.
+12:12:42 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+12:21:58 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+12:22:03 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+12:37:14 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+12:39:28 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+12:40:45 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:17:43 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+13:22:07 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+13:30:55 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:37:40 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+../src/Calc.c: In function ‘push’:
+../src/Calc.c:485:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long int’ [-Wformat=]
+  printf("------- tos(%08x) <= %0.6g\n", (long) tos, value);
+  ^
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:39:44 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+../src/Calc.c: In function ‘push’:
+../src/Calc.c:485:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long int’ [-Wformat=]
+  printf("------- tos(%08x) <= %15.6g\n", (long) tos, value);
+  ^
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:43:24 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+../src/Calc.c: In function ‘main’:
+../src/Calc.c:65:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long int’ [-Wformat=]
+  printf("-------- tos(%08x) stack(%08x)\n", (long) tos, (long) tos);
+  ^
+../src/Calc.c:65:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘long int’ [-Wformat=]
+../src/Calc.c: In function ‘push’:
+../src/Calc.c:486:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long int’ [-Wformat=]
+  printf("------- tos(%08x) <= %15.6g\n", (long) tos, value);
+  ^
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:44:53 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+../src/Calc.c: In function ‘main’:
+../src/Calc.c:65:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long int’ [-Wformat=]
+  printf("-------- tos(%08x) stack(%08x)\n", (long) tos, (long) tos);
+  ^
+../src/Calc.c:65:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘long int’ [-Wformat=]
+../src/Calc.c: In function ‘push’:
+../src/Calc.c:486:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long int’ [-Wformat=]
+  printf("------- tos(%08x) <= %15.6g\n", (long) tos, value);
+  ^
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:45:42 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+../src/Calc.c: In function ‘main’:
+../src/Calc.c:65:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+  printf("-------- tos(%08x) stack(%08x)\n", (unsigned long) tos, (unsigned long) tos);
+  ^
+../src/Calc.c:65:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘long unsigned int’ [-Wformat=]
+../src/Calc.c: In function ‘push’:
+../src/Calc.c:486:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+  printf("------- tos(%08x) <= %15.6g\n", (unsigned long) tos, value);
+  ^
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:46:29 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+../src/Calc.c: In function ‘main’:
+../src/Calc.c:65:45: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  printf("-------- tos(%08x) stack(%08x)\n", (unsigned int) tos, (unsigned int) tos);
+                                             ^
+../src/Calc.c:65:65: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  printf("-------- tos(%08x) stack(%08x)\n", (unsigned int) tos, (unsigned int) tos);
+                                                                 ^
+../src/Calc.c: In function ‘push’:
+../src/Calc.c:486:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  printf("------- tos(%08x) <= %15.6g\n", (unsigned int) tos, value);
+                                          ^
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:47:24 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:48:24 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:53:55 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:54:23 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+13:54:55 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+14:00:17 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+14:06:28 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+14:07:29 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+14:08:01 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+14:09:17 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+Building file: ../src/Calc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Calc.d" -MT"src/Calc.d" -o "src/Calc.o" "../src/Calc.c"
+Finished building: ../src/Calc.c
+ 
+Building target: Calc
+Invoking: GCC C Linker
+gcc  -o "Calc"  ./src/Calc.o ./src/ScannerPascal.o ./src/error.o ./src/symtab.o   -lm
+Finished building target: Calc
+ 
+14:09:58 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.
+14:10:33 **** Incremental Build of configuration Debug for project Calc ****
+make all 
+make: Nothing to be done for 'all'.

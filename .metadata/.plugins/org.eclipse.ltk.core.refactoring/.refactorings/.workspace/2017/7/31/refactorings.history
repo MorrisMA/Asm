@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 5 resources" deleteContents="false" description="Delete 5 resources" element1="/Infix2Postfix_Converter/src/common.h" element2="/Infix2Postfix_Converter/src/error.h" element3="/Infix2Postfix_Converter/src/ScannerPascal.h" element4="/Infix2Postfix_Converter/src/error.c" element5="/Infix2Postfix_Converter/src/ScannerPascal.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="5" stamp="1501379625382"/>
+</session>

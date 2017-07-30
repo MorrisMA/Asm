@@ -1,0 +1,6 @@
+12:12:08 **** Incremental Build of configuration Debug for project Infix2Postfix_Converter ****
+make all 
+make: Nothing to be done for 'all'.
+
+12:12:09 Build Finished (took 254ms)
+
